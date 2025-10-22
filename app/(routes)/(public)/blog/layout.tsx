@@ -1,89 +1,89 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Livestocx - About Us',
-	description: 'Best deals, Everything Animals',
-	keywords: ['Livestocx', 'Livestock', 'Nigeria', 'Pets', 'Animals', 'Meat'],
-	other: {
-		'facebook-domain-verification': 'yy2fxudmyl6e8nxtl2zjx9lss8j8dl',
-	},
-	openGraph: {
-		title: 'Livestocx - About Us',
-		description: 'Best deals, Everything Animals',
-		url: 'https://livestocx.com',
-		siteName: 'Livestocx',
-		type: 'website',
-		images: [
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x200.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x200.png',
-				width: 300,
-				height: 200,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x300.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x300.png',
-				width: 300,
-				height: 300,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				alt: 'Livestocx Banner',
-				width: 1200,
-				height: 630,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				alt: 'Livestocx Banner',
-			},
-		],
-	},
-	twitter: {
-		card: 'summary',
-		site: '@livestocx',
-		creator: '@livestocx',
-		title: 'Livestocx - About Us',
+  title: 'Girlified - Blog',
+  description: 'More Comfort, Less Expensive Periods, Less Pollution',
+  keywords: ['Girlified', 'Nigeria', 'Sanitary', 'Pads', 'Biodegradable'],
+  other: {
+    'facebook-domain-verification': 'yy2fxudmyl6e8nxtl2zjx9lss8j8dl',
+  },
+  openGraph: {
+    title: 'Girlified - Blog',
+    description: 'More Comfort, Less Expensive Periods, Less Pollution',
+    url: 'https://girlified.com.ng/',
+    siteName: 'Girlified',
+    type: 'website',
+    images: [
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        width: 300,
+        height: 200,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        width: 300,
+        height: 300,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        alt: 'Girlified Banner',
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        alt: 'Girlified Banner',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    site: '@girlified',
+    creator: '@girlified',
+    title: 'Girlified - Blog',
 
-		description: 'Best deals, Everything Animals',
-		images: [
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x200.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x200.png',
-				width: 300,
-				height: 200,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x300.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-300x300.png',
-				width: 300,
-				height: 300,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				alt: 'Livestocx Banner',
-				width: 1200,
-				height: 630,
-			},
-			{
-				url: 'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				secureUrl:
-					'https://livestocx-media.s3.amazonaws.com/public/livestocx-thumbnail-1200x630.png',
-				alt: 'Livestocx Banner',
-			},
-		],
-	},
+    description: 'More Comfort, Less Expensive Periods, Less Pollution',
+    images: [
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        width: 300,
+        height: 200,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        width: 300,
+        height: 300,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        alt: 'Girlified Banner',
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: 'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        secureUrl:
+          'https://infra.livestocx.xyz/v1/account/upload/file?fileName=girlified-thumbnail%20200by300',
+        alt: 'Girlified Banner',
+      },
+    ],
+  },
 };
 
-export default function Layout({children}: {children: React.ReactNode}) {
-	return <>{children}</>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
