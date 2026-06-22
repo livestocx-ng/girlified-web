@@ -92,7 +92,7 @@ const Hero = () => {
 
   return (
     <Box>
-      {/* ─── HERO ─── */}
+      {/* ─── HERO-SECTION ─── */}
       <Box
         component="section"
         id="home"
