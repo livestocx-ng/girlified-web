@@ -1,0 +1,9 @@
+/* Global Styles */
+
+:root {
+  --mantine-color-body: #FBF6EE;
+}
+
+body {
+  background-color: #FBF6EE !important;
+}
