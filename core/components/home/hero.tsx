@@ -80,6 +80,31 @@ const ctaItemVariants = {
   },
 };
 
+const heroImageTransition = {
+  opacity: { duration: 1.4, ease: easeOut },
+  scale: { duration: 6, ease: 'linear' as const },
+};
+
+const heroImageVariants = {
+  enter: {
+    opacity: 0,
+    scale: 1.1,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: heroImageTransition,
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.04,
+    transition: {
+      opacity: { duration: 1.4, ease: easeOut },
+      scale: { duration: 1.4, ease: easeOut },
+    },
+  },
+};
+
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -109,13 +134,13 @@ const Hero = () => {
       >
         {/* Background Images with Fade Transition */}
         <Box style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
-          <AnimatePresence initial={false}>
+          <AnimatePresence initial={false} mode="sync">
             <motion.div
               key={currentImageIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              variants={heroImageVariants}
+              initial="enter"
+              animate="visible"
+              exit="exit"
               style={{
                 position: 'absolute',
                 inset: 0,
@@ -125,6 +150,7 @@ const Hero = () => {
                 backgroundRepeat: 'no-repeat',
                 pointerEvents: 'none',
                 filter: 'brightness(0.9) contrast(1.05)',
+                willChange: 'opacity, transform',
               }}
             />
           </AnimatePresence>

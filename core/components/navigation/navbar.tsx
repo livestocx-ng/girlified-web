@@ -38,24 +38,50 @@ const navLinkStyle = {
 const ACTIVE_NAV_BG = 'rgba(51, 65, 85, 0.1)';
 const ACTIVE_NAV_COLOR = '#334155';
 const INACTIVE_NAV_COLOR = '#212529';
+const TOP_NAV_COLOR = '#FFFFFF';
+const TOP_NAV_ACTIVE_BG = 'rgba(255, 255, 255, 0.18)';
+const TOP_NAV_HOVER_BG = 'rgba(255, 255, 255, 0.12)';
 
 const isNavLinkActive = (pathname: string, href: string) =>
   pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
 
-const getNavLinkStyle = (isActive: boolean) => ({
-  ...navLinkStyle,
-  background: isActive ? ACTIVE_NAV_BG : 'transparent',
-  color: isActive ? ACTIVE_NAV_COLOR : INACTIVE_NAV_COLOR,
-});
+const getNavColors = (isActive: boolean, isScrolled: boolean) => {
+  if (!isScrolled) {
+    return {
+      color: TOP_NAV_COLOR,
+      background: isActive ? TOP_NAV_ACTIVE_BG : 'transparent',
+      hoverBg: TOP_NAV_HOVER_BG,
+      hoverColor: TOP_NAV_COLOR,
+    };
+  }
 
-const handleNavMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-  e.currentTarget.style.background = ACTIVE_NAV_BG;
-  e.currentTarget.style.color = ACTIVE_NAV_COLOR;
+  return {
+    color: isActive ? ACTIVE_NAV_COLOR : INACTIVE_NAV_COLOR,
+    background: isActive ? ACTIVE_NAV_BG : 'transparent',
+    hoverBg: ACTIVE_NAV_BG,
+    hoverColor: ACTIVE_NAV_COLOR,
+  };
 };
 
-const handleNavMouseLeave = (e: React.MouseEvent<HTMLElement>, isActive: boolean) => {
-  e.currentTarget.style.background = isActive ? ACTIVE_NAV_BG : 'transparent';
-  e.currentTarget.style.color = isActive ? ACTIVE_NAV_COLOR : INACTIVE_NAV_COLOR;
+const getNavLinkStyle = (isActive: boolean, isScrolled: boolean) => {
+  const { color, background } = getNavColors(isActive, isScrolled);
+  return { ...navLinkStyle, color, background };
+};
+
+const handleNavMouseEnter = (e: React.MouseEvent<HTMLElement>, isScrolled: boolean) => {
+  const { hoverBg, hoverColor } = getNavColors(false, isScrolled);
+  e.currentTarget.style.background = hoverBg;
+  e.currentTarget.style.color = hoverColor;
+};
+
+const handleNavMouseLeave = (
+  e: React.MouseEvent<HTMLElement>,
+  isActive: boolean,
+  isScrolled: boolean,
+) => {
+  const { color, background } = getNavColors(isActive, isScrolled);
+  e.currentTarget.style.background = background;
+  e.currentTarget.style.color = color;
 };
 
 const MOBILE_INACTIVE_COLOR = '#FCF9FA';
@@ -90,6 +116,7 @@ export function Navbar() {
   const [blogOpened, { toggle: toggleBlog }] = useDisclosure(false);
   const primaryNavLinks = navLinks.filter((link) => link.link !== '/contact-us');
   const contactLink = navLinks.find((link) => link.link === '/contact-us');
+  const isScrolled = scroll.y > 0;
 
   return (
     <>
@@ -102,10 +129,10 @@ export function Navbar() {
           left: 0,
           right: 0,
           zIndex: 10,
-          backdropFilter: scroll.y > 0 ? 'blur(16px)' : 'none',
-          WebkitBackdropFilter: scroll.y > 0 ? 'blur(16px)' : 'blur(16px)',
-          backgroundColor: scroll.y > 0 ? 'rgba(232, 232, 232, 0.35)' : 'rgba(232, 232, 232, 0.1)',
-          borderBottom: scroll.y > 0 ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+          backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'blur(16px)',
+          backgroundColor: isScrolled ? 'rgba(232, 232, 232, 0.35)' : 'rgba(232, 232, 232, 0.1)',
+          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
         }}
       >
         <Container size="xl" py={10}>
@@ -113,7 +140,7 @@ export function Navbar() {
             {/* Left section: Logo */}
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
               <Image
-                src="/icons/logo.svg"
+                src={isScrolled ? '/icons/logo.svg' : '/icons/logo-white.svg'}
                 alt="Girlified Logo"
                 h={30}
                 w="auto"
@@ -130,10 +157,11 @@ export function Navbar() {
                   <Link
                     key={link.label}
                     href={link.link}
-                    target={link.target}
-                    style={getNavLinkStyle(isActive)}
-                    onMouseEnter={handleNavMouseEnter}
-                    onMouseLeave={(e) => handleNavMouseLeave(e, isActive)}
+                    target={link.target || undefined}
+                    rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
+                    style={getNavLinkStyle(isActive, isScrolled)}
+                    onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
+                    onMouseLeave={(e) => handleNavMouseLeave(e, isActive, isScrolled)}
                   >
                     {link.label}
                   </Link>
@@ -163,15 +191,17 @@ export function Navbar() {
                 <Menu.Target>
                   <UnstyledButton
                     style={{
-                      ...getNavLinkStyle(isNavLinkActive(pathname, '/blog')),
+                      ...getNavLinkStyle(isNavLinkActive(pathname, '/blog'), isScrolled),
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: rem(4),
                       cursor: 'pointer',
                       border: 'none',
                     }}
-                    onMouseEnter={handleNavMouseEnter}
-                    onMouseLeave={(e) => handleNavMouseLeave(e, isNavLinkActive(pathname, '/blog'))}
+                    onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
+                    onMouseLeave={(e) =>
+                      handleNavMouseLeave(e, isNavLinkActive(pathname, '/blog'), isScrolled)
+                    }
                   >
                     Blog
                     <IconChevronDown size={14} stroke={2.2} />
@@ -217,10 +247,10 @@ export function Navbar() {
                 <Link
                   href={contactLink.link}
                   target={contactLink.target}
-                  style={getNavLinkStyle(isNavLinkActive(pathname, contactLink.link))}
-                  onMouseEnter={handleNavMouseEnter}
+                  style={getNavLinkStyle(isNavLinkActive(pathname, contactLink.link), isScrolled)}
+                  onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
                   onMouseLeave={(e) =>
-                    handleNavMouseLeave(e, isNavLinkActive(pathname, contactLink.link))
+                    handleNavMouseLeave(e, isNavLinkActive(pathname, contactLink.link), isScrolled)
                   }
                 >
                   {contactLink.label}
@@ -262,7 +292,7 @@ export function Navbar() {
                 onClick={toggle}
                 hiddenFrom="md"
                 size="sm"
-                color="#212529"
+                color={isScrolled ? '#212529' : '#FFFFFF'}
               />
             </Group>
           </Group>
@@ -299,6 +329,8 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.link}
+                  target={link.target || undefined}
+                  rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                   style={getMobileNavLinkStyle(isActive)}
                   onMouseEnter={handleMobileNavMouseEnter}
                   onMouseLeave={(e) => handleMobileNavMouseLeave(e, isActive)}
