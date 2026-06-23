@@ -152,7 +152,7 @@ const TractionSection = () => {
                 backgroundClip: 'text',
               }}
             >
-              Loved by Menstruators, Approved by Nature
+              Loved by Women, Approved by Nature
             </Title>
             <Text
               size="md"
