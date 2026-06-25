@@ -438,7 +438,7 @@ const Hero = () => {
           position: 'relative',
         }}
       >
-        <Box
+        <div
           style={{
             position: 'absolute',
             inset: 0,

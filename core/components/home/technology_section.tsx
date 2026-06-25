@@ -117,6 +117,10 @@ const TechnologySection = () => {
                 letterSpacing: '-1.5px',
                 color: '#0C090B',
                 maxWidth: 700,
+                background: 'linear-gradient(135deg, #0C090B 0%, #CC0066 60%, #FF007F 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               The Next Generation of Natural Menstrual Care
