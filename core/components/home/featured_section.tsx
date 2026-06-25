@@ -48,7 +48,7 @@ const FeaturedSection = () => {
         <Stack gap="xl" align="center" ta="center">
           {/* Header */}
           <Stack align="center" gap="md">
-            <Badge
+            {/* <Badge
               size="lg"
               radius="xl"
               style={{
@@ -60,7 +60,7 @@ const FeaturedSection = () => {
               }}
             >
               MEDIA FEATURE
-            </Badge>
+            </Badge> */}
             <Title
               order={2}
               style={{

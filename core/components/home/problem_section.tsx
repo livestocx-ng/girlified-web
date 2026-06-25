@@ -97,7 +97,7 @@ const ProblemSection = () => {
         <Stack gap="50px">
           {/* Header section */}
           <Stack gap="md" align="center" ta="center" style={{ maxWidth: 760, marginInline: 'auto' }}>
-            <Badge
+            {/* <Badge
               size="lg"
               radius="xl"
               style={{
@@ -109,7 +109,7 @@ const ProblemSection = () => {
               }}
             >
               THE CRISIS
-            </Badge>
+            </Badge> */}
             <Title
               order={2}
               style={{

@@ -175,6 +175,25 @@ export function Footer() {
                   c="gray.5"
                   style={{ textTransform: 'uppercase', letterSpacing: '0.8px' }}
                 >
+                  Locations
+                </Text>
+                <Stack gap="xs">
+                  <Text size="sm" c="gray.4" style={{ lineHeight: 1.6 }}>
+                    No 17 Sabon Lugbe, Airport Road, Abuja, Nigeria.
+                  </Text>
+                  <Text size="sm" c="gray.4" style={{ lineHeight: 1.6 }}>
+                    No 3 Longwa Phase 1 Opposite Solomon Lar Amusement Park, Jos, Nigeria
+                  </Text>
+                </Stack>
+              </Stack>
+
+              <Stack gap="sm" mt="xs">
+                <Text
+                  size="xs"
+                  fw={700}
+                  c="gray.5"
+                  style={{ textTransform: 'uppercase', letterSpacing: '0.8px' }}
+                >
                   Get the App
                 </Text>
                 <Group gap="sm" wrap="wrap">

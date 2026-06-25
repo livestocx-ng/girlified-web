@@ -126,7 +126,7 @@ const TractionSection = () => {
         <Stack gap="60px">
           {/* Header */}
           <Stack align="center" ta="center" gap="md">
-            <Badge
+            {/* <Badge
               size="lg"
               radius="xl"
               style={{
@@ -138,7 +138,7 @@ const TractionSection = () => {
               }}
             >
               TESTIMONIALS
-            </Badge>
+            </Badge> */}
             <Title
               order={2}
               style={{
