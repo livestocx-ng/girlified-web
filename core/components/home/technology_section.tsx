@@ -23,7 +23,7 @@ const TechnologySection = () => {
         'By completely eliminating plastic layers and petrochemical Super Absorbent Polymers (SAP), our pads fully decompose in landfills or compost bins within six months.',
       benefit: 'Decomposes completely in 6 months',
       icon: IconCpu,
-      image: 'https://girlified.com.ng/wp-content/uploads/2025/03/picture.jpg',
+      image: '/images/product/image_research_3.jpg',
     },
     {
       title: 'Hypoallergenic & Rash-Free',
@@ -31,7 +31,7 @@ const TechnologySection = () => {
         'No synthetic bleach, chlorine, or chemical fragrances. The natural plant-based core prevents vaginal irritation, friction rashes, and corporate toxic chemical exposures.',
       benefit: 'Zero chemicals, zero rashes guaranteed',
       icon: IconUsers,
-      image: 'https://girlified.com.ng/wp-content/uploads/2025/03/pic1.jpg',
+      image: '/images/product/image_research_4.jpg',
     },
   ];
 
@@ -153,7 +153,7 @@ const TechnologySection = () => {
                       onClick={() => setActiveTab(index)}
                       initial={false}
                       animate={{
-                        backgroundColor: isActive ? '#f9f0e2' : 'rgba(249, 240, 226, 0)',
+                        backgroundColor: isActive ? '#FAF4ED' : 'rgba(249, 240, 226, 0)',
                         boxShadow: isActive
                           ? '0 8px 25px rgba(137, 137, 137, 0.3)'
                           : '0 0px 0px rgba(137, 137, 137, 0)',
