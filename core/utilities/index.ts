@@ -25,8 +25,26 @@ export const navLinks = [
   { link: '/about-us', label: 'About Us', target: '' },
   { link: '/our-story', label: 'Our Story', target: '' },
   { link: '/smart-pad', label: 'Smart Pad', target: '' },
+  { link: '/research', label: 'Research', target: '' },
   { link: 'https://saifeai.girlified.co', label: 'SaifeAI', target: '_blank' },
   { link: '/contact-us', label: 'Contact', target: '' },
+];
+
+export const researchPapers = [
+  {
+    id: 'superabsorbent-banana-fiber',
+    title:
+      'Preparation of superabsorbent composite(s) based on dialdehyde cellulose extracted from banana fiber waste',
+    pdfPath: '/research/1-s2.0-S0144861724007306-main.pdf',
+    previewPath: '/research/previews/1-s2.0-S0144861724007306-main.jpg',
+  },
+  {
+    id: 'banana-stem-biomedical',
+    title:
+      'Exploring the synthesis and biomedical potential of banana stem fiber for antimicrobial and wound healing applications',
+    pdfPath: '/research/s42452-025-07151-6.pdf',
+    previewPath: '/research/previews/s42452-025-07151-6.jpg',
+  },
 ];
 
 export const blogPosts = [
