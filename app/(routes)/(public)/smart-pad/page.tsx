@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Box, Card, Container, Flex, Grid, Group, Stack, Text, Title, Badge, Button, SimpleGrid } from '@mantine/core';
-import { IconActivity, IconAlertOctagon, IconAppWindow, IconHeart, IconShieldCheck } from '@tabler/icons-react';
+import { Box, Card, Container, Flex, Grid, Group, Stack, Text, Title, Badge, SimpleGrid } from '@mantine/core';
+import { IconActivity, IconAlertOctagon, IconHeart, IconShieldCheck } from '@tabler/icons-react';
 
 const SmartPadPage = () => {
   const conditions = [
@@ -280,55 +280,112 @@ const SmartPadPage = () => {
             </SimpleGrid>
           </Stack>
 
-          {/* Download App CTA */}
+          {/* Research Validation Roadmap */}
           <Card
             radius="lg"
             p="60px 40px"
             style={{
               backgroundColor: 'rgba(255, 255, 255, 0.5)',
               border: '1px solid rgba(255, 0, 127, 0.15)',
-              textAlign: 'center',
               backdropFilter: 'blur(16px)',
               boxShadow: '0 30px 60px rgba(12, 9, 11, 0.1), 0 0 40px rgba(255, 0, 127, 0.05)',
             }}
           >
-            <Stack gap="xl" align="center">
-              <IconAppWindow size={40} color="#FF007F" />
-              <Title order={2} style={{ letterSpacing: '-1px', color: '#0C090B' }}>
-                Track Your Health Seamlessly
-              </Title>
-              <Text size="md" style={{ maxWidth: 700, lineHeight: 1.6, color: 'rgba(12, 9, 11, 0.72)' }}>
-                Connect your diagnostic results and log symptoms on the go. Get alerts, cycle insights, and secure medical data records designed specifically for your reproductive well-being.
-              </Text>
-              <Group gap="md">
-                <Button
-                  component="a"
-                  href="https://play.google.com/store/apps/details?id=com.girlified.girlified"
-                  target="_blank"
-                  variant="filled"
-                  radius="xl"
+            <Stack gap="xl">
+              <Stack gap="md" ta="center" align="center">
+                <Badge
                   size="md"
+                  radius="xl"
                   style={{
-                    background: 'linear-gradient(135deg, #FF007F 0%, #CC0066 100%)',
-                    color: 'white',
-                    fontWeight: 600,
-                    padding: '12px 36px',
-                    transition: 'all 0.2s',
-                    boxShadow: '0 4px 15px rgba(255,0,127,0.3)',
-                    border: 'none',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,0,127,0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(255,0,127,0.3)';
+                    background: 'rgba(255, 0, 127, 0.08)',
+                    color: '#FF007F',
+                    border: '1px solid rgba(255, 0, 127, 0.15)',
+                    fontWeight: 700,
+                    letterSpacing: '0.8px',
                   }}
                 >
-                  Download Android App
-                </Button>
-              </Group>
+                  RESEARCH & VALIDATION
+                </Badge>
+                <Title order={2} style={{ letterSpacing: '-1px', color: '#0C090B' }}>
+                  How Smart Pad Research Moves to Real-World Care
+                </Title>
+                <Text size="md" style={{ maxWidth: 760, lineHeight: 1.6, color: 'rgba(12, 9, 11, 0.72)' }}>
+                  Our smart sanitary pad program follows a clear scientific pathway: identify biomarkers, validate
+                  assay performance, and translate findings into practical screening insights designed for everyday use.
+                </Text>
+              </Stack>
+
+              <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+                <Card
+                  radius="md"
+                  p="lg"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.74)',
+                    border: '1px solid rgba(255, 0, 127, 0.12)',
+                  }}
+                >
+                  <Stack gap="xs">
+                    <Text size="xs" fw={700} c="#FF007F" style={{ letterSpacing: '0.7px' }}>
+                      PHASE 1
+                    </Text>
+                    <Title order={3} style={{ fontSize: '1.1rem', color: '#0C090B' }}>
+                      Biomarker Discovery
+                    </Title>
+                    <Text size="sm" style={{ lineHeight: 1.6, color: 'rgba(12, 9, 11, 0.74)' }}>
+                      Map menstrual-fluid proteins, cell fragments, and metabolites linked to high-burden gynecological
+                      conditions.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  radius="md"
+                  p="lg"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.74)',
+                    border: '1px solid rgba(255, 0, 127, 0.12)',
+                  }}
+                >
+                  <Stack gap="xs">
+                    <Text size="xs" fw={700} c="#FF007F" style={{ letterSpacing: '0.7px' }}>
+                      PHASE 2
+                    </Text>
+                    <Title order={3} style={{ fontSize: '1.1rem', color: '#0C090B' }}>
+                      Clinical Validation
+                    </Title>
+                    <Text size="sm" style={{ lineHeight: 1.6, color: 'rgba(12, 9, 11, 0.74)' }}>
+                      Benchmark smart-pad assay outputs against established diagnostic references to improve reliability
+                      and reproducibility.
+                    </Text>
+                  </Stack>
+                </Card>
+
+                <Card
+                  radius="md"
+                  p="lg"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.74)',
+                    border: '1px solid rgba(255, 0, 127, 0.12)',
+                  }}
+                >
+                  <Stack gap="xs">
+                    <Text size="xs" fw={700} c="#FF007F" style={{ letterSpacing: '0.7px' }}>
+                      PHASE 3
+                    </Text>
+                    <Title order={3} style={{ fontSize: '1.1rem', color: '#0C090B' }}>
+                      Screening Deployment
+                    </Title>
+                    <Text size="sm" style={{ lineHeight: 1.6, color: 'rgba(12, 9, 11, 0.74)' }}>
+                      Package validated science into accessible workflows that support earlier risk signaling and clinical
+                      follow-up decisions.
+                    </Text>
+                  </Stack>
+                </Card>
+              </SimpleGrid>
+
+              <Text ta="center" size="sm" style={{ color: 'rgba(12, 9, 11, 0.6)' }}>
+                Evidence-led development helps ensure Smart Pad insights remain useful, safe, and clinically meaningful.
+              </Text>
             </Stack>
           </Card>
         </Stack>

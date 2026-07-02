@@ -206,7 +206,7 @@ export function Footer() {
           </Grid.Col>
 
           {/* Right Section - Links and Social */}
-          <Grid.Col span={{ base: 12, sm: 6 }}>
+          <Grid.Col span={{ base: 12, sm: 7 }}>
             <Grid justify="space-between">
               {/* Company */}
               <Grid.Col span={{ base: 6, sm: 4 }}>
@@ -240,6 +240,38 @@ export function Footer() {
                   </Anchor>
                   <Anchor
                     component={Link}
+                    href="/contact-us"
+                    size="sm"
+                    c="gray.3"
+                    style={{ textDecoration: 'none', transition: 'color 0.2s' }}
+                  >
+                    Contact
+                  </Anchor>
+                  <Anchor
+                    component={Link}
+                    href="/blog"
+                    size="sm"
+                    c="gray.3"
+                    style={{ textDecoration: 'none', transition: 'color 0.2s' }}
+                  >
+                    Blog
+                  </Anchor>
+                </Stack>
+              </Grid.Col>
+
+              {/* Research */}
+              <Grid.Col span={{ base: 6, sm: 4 }}>
+                <Stack gap="sm">
+                  <Text
+                    size="xs"
+                    fw={700}
+                    c="gray.5"
+                    style={{ textTransform: 'uppercase', letterSpacing: '0.8px' }}
+                  >
+                    Research & Development
+                  </Text>
+                  <Anchor
+                    component={Link}
                     href="/smart-pad"
                     size="sm"
                     c="gray.3"
@@ -249,12 +281,22 @@ export function Footer() {
                   </Anchor>
                   <Anchor
                     component={Link}
-                    href="/contact-us"
+                    href="/research"
                     size="sm"
                     c="gray.3"
                     style={{ textDecoration: 'none', transition: 'color 0.2s' }}
                   >
-                    Support
+                    Our Research
+                  </Anchor>
+                  <Anchor
+                    href="https://saifeai.girlified.co"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="sm"
+                    c="gray.3"
+                    style={{ textDecoration: 'none', transition: 'color 0.2s' }}
+                  >
+                    SaifeAI
                   </Anchor>
                 </Stack>
               </Grid.Col>

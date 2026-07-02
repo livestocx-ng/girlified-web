@@ -117,6 +117,8 @@ export function Navbar() {
   const primaryNavLinks = navLinks.filter((link) => link.link !== '/contact-us');
   const contactLink = navLinks.find((link) => link.link === '/contact-us');
   const isScrolled = scroll.y > 0;
+  const isSmartPadRoute = pathname === '/smart-pad' || pathname.startsWith('/smart-pad/');
+  const useDarkNavbar = isScrolled || isSmartPadRoute;
 
   return (
     <>
@@ -140,7 +142,7 @@ export function Navbar() {
             {/* Left section: Logo */}
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
               <Image
-                src={isScrolled ? '/icons/logo.svg' : '/icons/logo-white.svg'}
+                src={useDarkNavbar ? '/icons/logo.svg' : '/icons/logo-white.svg'}
                 alt="Girlified Logo"
                 h={30}
                 w="auto"
@@ -159,9 +161,9 @@ export function Navbar() {
                     href={link.link}
                     target={link.target || undefined}
                     rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
-                    style={getNavLinkStyle(isActive, isScrolled)}
-                    onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
-                    onMouseLeave={(e) => handleNavMouseLeave(e, isActive, isScrolled)}
+                    style={getNavLinkStyle(isActive, useDarkNavbar)}
+                    onMouseEnter={(e) => handleNavMouseEnter(e, useDarkNavbar)}
+                    onMouseLeave={(e) => handleNavMouseLeave(e, isActive, useDarkNavbar)}
                   >
                     {link.label}
                   </Link>
@@ -191,16 +193,16 @@ export function Navbar() {
                 <Menu.Target>
                   <UnstyledButton
                     style={{
-                      ...getNavLinkStyle(isNavLinkActive(pathname, '/blog'), isScrolled),
+                      ...getNavLinkStyle(isNavLinkActive(pathname, '/blog'), useDarkNavbar),
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: rem(4),
                       cursor: 'pointer',
                       border: 'none',
                     }}
-                    onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
+                    onMouseEnter={(e) => handleNavMouseEnter(e, useDarkNavbar)}
                     onMouseLeave={(e) =>
-                      handleNavMouseLeave(e, isNavLinkActive(pathname, '/blog'), isScrolled)
+                      handleNavMouseLeave(e, isNavLinkActive(pathname, '/blog'), useDarkNavbar)
                     }
                   >
                     Blog
@@ -247,10 +249,10 @@ export function Navbar() {
                 <Link
                   href={contactLink.link}
                   target={contactLink.target}
-                  style={getNavLinkStyle(isNavLinkActive(pathname, contactLink.link), isScrolled)}
-                  onMouseEnter={(e) => handleNavMouseEnter(e, isScrolled)}
+                  style={getNavLinkStyle(isNavLinkActive(pathname, contactLink.link), useDarkNavbar)}
+                  onMouseEnter={(e) => handleNavMouseEnter(e, useDarkNavbar)}
                   onMouseLeave={(e) =>
-                    handleNavMouseLeave(e, isNavLinkActive(pathname, contactLink.link), isScrolled)
+                    handleNavMouseLeave(e, isNavLinkActive(pathname, contactLink.link), useDarkNavbar)
                   }
                 >
                   {contactLink.label}
@@ -292,7 +294,7 @@ export function Navbar() {
                 onClick={toggle}
                 hiddenFrom="md"
                 size="sm"
-                color={isScrolled ? '#212529' : '#FFFFFF'}
+                color={useDarkNavbar ? '#212529' : '#FFFFFF'}
               />
             </Group>
           </Group>
