@@ -288,7 +288,7 @@ const ResearchPage = () => {
               Peer-reviewed publications informing our work
             </Title>
             <Text size="md" c={MUTED} style={{ lineHeight: 1.7 }}>
-              Select a paper to read the full PDF in a new tab. Each publication supports our
+              Select a paper to read. Each publication supports our
               approach to plant-based absorbent materials and sustainable menstrual health
               innovation.
             </Text>
@@ -300,7 +300,7 @@ const ResearchPage = () => {
                 key={paper.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.35 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
               >
                 <ResearchPaperCard {...paper} />
