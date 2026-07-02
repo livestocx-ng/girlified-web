@@ -220,7 +220,7 @@ const ResearchPage = () => {
             transition={{ duration: 0.55 }}
           >
             <Stack gap="lg" maw={760}>
-              {/* <Badge
+              <Badge
                 radius="xl"
                 size="lg"
                 leftSection={<IconFlask size={14} />}
@@ -235,7 +235,7 @@ const ResearchPage = () => {
                 }}
               >
                 Evidence-Led Innovation
-              </Badge> */}
+              </Badge>
 
               <Title
                 order={1}
