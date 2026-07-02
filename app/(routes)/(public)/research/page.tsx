@@ -204,7 +204,7 @@ const ResearchPage = () => {
             inset: 0,
             zIndex: 1,
             background:
-              'linear-gradient(to bottom, rgba(12, 9, 11, 0.45) 0%, rgba(12, 9, 11, 0.32) 72%, rgba(12, 9, 11, 0.92) 100%)',
+              'linear-gradient(to bottom, rgba(12, 9, 11, 0.25) 0%, rgba(12, 9, 11, 0.32) 72%, rgba(12, 9, 11, 0.82) 100%)',
           }}
         />
 
@@ -254,14 +254,16 @@ const ResearchPage = () => {
               <Text
                 size="lg"
                 style={{
-                  color: 'rgba(255, 255, 255, 0.88)',
+                  color: '#FFFFFF',
                   lineHeight: 1.7,
                 }}
               >
-                Girlified follows peer-reviewed scientific literature to guide our fibre science,
+                Our R&D process is evidence-led, using scientific literature to build effective and
+                biodegradable pads.
+                {/* Girlified follows peer-reviewed scientific literature to guide our fibre science,
                 material safety, and product development. From banana stem characterization to
                 superabsorbent composites, published research informs how we build pads that are
-                effective, biodegradable, and grounded in evidence.
+                effective, biodegradable, and grounded in evidence. */}
               </Text>
             </Stack>
           </motion.div>
