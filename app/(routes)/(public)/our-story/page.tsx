@@ -596,7 +596,7 @@ const OurStoryPage = () => {
                   </Title>
                   <Text size="md" style={{ lineHeight: 1.65, color: 'rgba(12, 9, 11, 0.72)' }}>
                     With a physics background from the University of Jos, William leads the fibre-to-fluff process
-                    that converts post-harvest banana pseudostem into highly absorbent, plastic-free sanitary pad cores—
+                    that converts post-harvest banana pseudostem into highly absorbent, plastic-free sanitary pad cores,
                     replacing conventional super absorbent polymers with plant-based materials.
                   </Text>
                   <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="md">

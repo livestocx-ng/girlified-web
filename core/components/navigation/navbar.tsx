@@ -117,8 +117,12 @@ export function Navbar() {
   const primaryNavLinks = navLinks.filter((link) => link.link !== '/contact-us');
   const contactLink = navLinks.find((link) => link.link === '/contact-us');
   const isScrolled = scroll.y > 0;
+  const isAboutUsRoute = pathname === '/about-us' || pathname.startsWith('/about-us/');
+  const isContactUsRoute = pathname === '/contact-us' || pathname.startsWith('/contact-us/');
+  const isResearchRoute = pathname === '/research' || pathname.startsWith('/research/');
   const isSmartPadRoute = pathname === '/smart-pad' || pathname.startsWith('/smart-pad/');
-  const useDarkNavbar = isScrolled || isSmartPadRoute;
+  const isOurStoryRoute = pathname === '/our-story' || pathname.startsWith('/our-story/');
+  const useDarkNavbar = isScrolled || isAboutUsRoute || isContactUsRoute || isResearchRoute || isSmartPadRoute || isOurStoryRoute;
 
   return (
     <>
