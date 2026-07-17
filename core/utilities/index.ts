@@ -26,8 +26,8 @@ export const navLinks = [
   { link: '/research', label: 'Research', target: '' },
   { link: '/smart-pad', label: 'Smart Pad', target: '' },
   { link: 'https://saifeai.girlified.co', label: 'SaifeAI', target: '_blank' },
-  { link: '/about-us', label: 'About Us', target: '' },
-  { link: '/contact-us', label: 'Contact', target: '' },
+  // { link: '/about-us', label: 'About Us', target: '' },
+  // { link: '/contact-us', label: 'Contact', target: '' },
 ];
 
 export const researchPapers = [
