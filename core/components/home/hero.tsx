@@ -105,8 +105,18 @@ const heroImageVariants = {
   },
 };
 
+const shuffleSponsors = <T,>(items: T[]): T[] => {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [shuffledSponsors] = useState(() => shuffleSponsors(Sponsors));
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -485,7 +495,7 @@ const Hero = () => {
               animate={{ x: ['0%', '-50%'] }}
               transition={{ duration: 30, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
             >
-            {[...Sponsors, ...Sponsors].map((sponsor, index) => (
+            {[...shuffledSponsors, ...shuffledSponsors].map((sponsor, index) => (
               <Box
                 key={`${sponsor.name}-${index}`}
                 style={{
