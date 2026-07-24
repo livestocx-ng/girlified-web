@@ -13,10 +13,10 @@ import {
   Group,
   Image,
   Menu,
+  rem,
   Stack,
   Text,
   UnstyledButton,
-  rem,
 } from '@mantine/core';
 import { useDisclosure, useWindowScroll } from '@mantine/hooks';
 import { blogPosts, navLinks } from '@/core/utilities';
@@ -77,7 +77,7 @@ const handleNavMouseEnter = (e: React.MouseEvent<HTMLElement>, isScrolled: boole
 const handleNavMouseLeave = (
   e: React.MouseEvent<HTMLElement>,
   isActive: boolean,
-  isScrolled: boolean,
+  isScrolled: boolean
 ) => {
   const { color, background } = getNavColors(isActive, isScrolled);
   e.currentTarget.style.background = background;
@@ -123,7 +123,12 @@ export function Navbar() {
   const isResearchRoute = pathname === '/research' || pathname.startsWith('/research/');
   const isOurStoryRoute = pathname === '/our-story' || pathname.startsWith('/our-story/');
   const useDarkNavbar =
-    isScrolled || isBlogRoute || isAboutUsRoute || isContactUsRoute || isResearchRoute || isOurStoryRoute;
+    isScrolled ||
+    isBlogRoute ||
+    isAboutUsRoute ||
+    isContactUsRoute ||
+    isResearchRoute ||
+    isOurStoryRoute;
 
   return (
     <>
@@ -139,13 +144,18 @@ export function Navbar() {
           backdropFilter: isScrolled ? 'blur(16px)' : 'none',
           WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'blur(16px)',
           backgroundColor: isScrolled ? 'rgba(232, 232, 232, 0.35)' : 'rgba(232, 232, 232, 0.1)',
-          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+          borderBottom: isScrolled
+            ? '1px solid rgba(255, 255, 255, 0.08)'
+            : '1px solid transparent',
         }}
       >
         <Container size="xl" py={10}>
           <Group justify="space-between" align="center">
             {/* Left section: Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
+            <Link
+              href="/"
+              style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
+            >
               <Image
                 src={useDarkNavbar ? '/icons/logo.svg' : '/icons/logo-white.svg'}
                 alt="Girlified Logo"
@@ -216,15 +226,13 @@ export function Navbar() {
                 </Menu.Target>
 
                 <Menu.Dropdown>
-                  <Menu.Label style={{ fontSize: rem(11), letterSpacing: '0.8px', color: '#FF007F' }}>
+                  <Menu.Label
+                    style={{ fontSize: rem(11), letterSpacing: '0.8px', color: '#FF007F' }}
+                  >
                     Latest Articles
                   </Menu.Label>
-                  {blogPosts.map((post) => (
-                    <Menu.Item
-                      key={post.slug}
-                      component={Link}
-                      href={`/blog/${post.slug}`}
-                    >
+                  {blogPosts.slice(0, 3).map((post) => (
+                    <Menu.Item key={post.slug} component={Link} href={`/blog/${post.slug}`}>
                       <Stack gap={2}>
                         <Group justify="space-between" gap="xs" wrap="nowrap">
                           <Text size="sm" fw={600} c="#0C090B" lineClamp={1}>
@@ -237,7 +245,13 @@ export function Navbar() {
                         <Text size="xs" c="dimmed" lineClamp={2} style={{ lineHeight: 1.45 }}>
                           {post.excerpt}
                         </Text>
-                        <Text size="10px" fw={700} c="#FF007F" tt="uppercase" style={{ letterSpacing: '0.6px' }}>
+                        <Text
+                          size="10px"
+                          fw={700}
+                          c="#FF007F"
+                          tt="uppercase"
+                          style={{ letterSpacing: '0.6px' }}
+                        >
                           {post.category}
                         </Text>
                       </Stack>
@@ -254,10 +268,17 @@ export function Navbar() {
                 <Link
                   href={contactLink.link}
                   target={contactLink.target}
-                  style={getNavLinkStyle(isNavLinkActive(pathname, contactLink.link), useDarkNavbar)}
+                  style={getNavLinkStyle(
+                    isNavLinkActive(pathname, contactLink.link),
+                    useDarkNavbar
+                  )}
                   onMouseEnter={(e) => handleNavMouseEnter(e, useDarkNavbar)}
                   onMouseLeave={(e) =>
-                    handleNavMouseLeave(e, isNavLinkActive(pathname, contactLink.link), useDarkNavbar)
+                    handleNavMouseLeave(
+                      e,
+                      isNavLinkActive(pathname, contactLink.link),
+                      useDarkNavbar
+                    )
                   }
                 >
                   {contactLink.label}
@@ -358,7 +379,9 @@ export function Navbar() {
                   justifyContent: 'space-between',
                   padding: `${rem(12)} ${rem(16)}`,
                   borderRadius: rem(8),
-                  color: isNavLinkActive(pathname, '/blog') ? ACTIVE_NAV_COLOR : MOBILE_INACTIVE_COLOR,
+                  color: isNavLinkActive(pathname, '/blog')
+                    ? ACTIVE_NAV_COLOR
+                    : MOBILE_INACTIVE_COLOR,
                   background: isNavLinkActive(pathname, '/blog') ? ACTIVE_NAV_BG : 'transparent',
                   fontSize: rem(18),
                   fontWeight: 600,

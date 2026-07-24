@@ -13,13 +13,12 @@ import {
   Container,
   Grid,
   Group,
-  SimpleGrid,
   Stack,
   Text,
   Title,
   UnstyledButton,
 } from '@mantine/core';
-import { blogPosts } from '@/core/utilities';
+import { blogCategories, blogPosts } from '@/core/utilities';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -48,6 +47,10 @@ const postCovers: Record<string, { src: string; alt: string }> = {
   'girlified-x-mit': {
     src: '/images/blog/girlified-x-mit/partnership.jpg',
     alt: 'Girlified and MIT Sloan SEID strategic partnership',
+  },
+  'm-ventures-accelerator': {
+    src: '/images/blog/m-ventures/image_m-ventures.jpg',
+    alt: 'Girlified research team in lab coats presenting sanitary pads and plant-fiber material',
   },
 };
 
@@ -182,31 +185,32 @@ const BlogCard = ({
 };
 
 const BlogPage = () => {
+  // Default active filter includes every blog category (All).
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = useMemo(
-    () => ['All', ...Array.from(new Set(blogPosts.map((post) => post.category)))],
-    []
-  );
+  const categories = useMemo(() => ['All', ...blogCategories], []);
 
-  const orderedPosts = useMemo(() => [...blogPosts].reverse(), []);
+  const filteredPosts = useMemo(() => {
+    if (activeCategory === 'All') {
+      return blogPosts.filter((post) => blogCategories.includes(post.category));
+    }
 
-  const filteredPosts = useMemo(
-    () =>
-      activeCategory === 'All'
-        ? orderedPosts
-        : orderedPosts.filter((post) => post.category === activeCategory),
-    [activeCategory, orderedPosts]
-  );
-
-  const [featuredPost, ...remainingPosts] = filteredPosts;
+    return blogPosts.filter((post) => post.category === activeCategory);
+  }, [activeCategory]);
 
   return (
-    <Box style={{ minHeight: '100vh', backgroundColor: '#FBF6EE', overflowX: 'hidden' }}>
+    <Box
+      pos="relative"
+      style={{
+        minHeight: '100vh',
+        backgroundColor: '#FBF6EE',
+      }}
+    >
       <Box
+        pos="absolute"
+        inset={0}
         style={{
-          position: 'absolute',
-          inset: 0,
+          zIndex: 0,
           backgroundImage: `linear-gradient(${PINK_BORDER} 1px, transparent 1px),
             linear-gradient(90deg, ${PINK_BORDER} 1px, transparent 1px)`,
           backgroundSize: '56px 56px',
@@ -215,7 +219,12 @@ const BlogPage = () => {
         }}
       />
 
-      <Container size="xl" pt={{ base: 120, sm: 140 }} pb={{ base: 56, sm: 80 }} style={{ position: 'relative' }}>
+      <Container
+        size="xl"
+        pt={{ base: 120, sm: 140 }}
+        pb={{ base: 56, sm: 80 }}
+        style={{ position: 'relative', zIndex: 1 }}
+      >
         <Stack gap={48}>
           {/* Hero */}
           <motion.div
@@ -288,33 +297,25 @@ const BlogPage = () => {
             })}
           </Group>
 
-          {/* Featured + grid */}
-          {featuredPost ? (
-            <Stack gap="xl">
-              <motion.div
-                key={`featured-${featuredPost.slug}`}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <BlogCard {...featuredPost} featured />
-              </motion.div>
-
-              {remainingPosts.length > 0 && (
-                <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-                  {remainingPosts.map((post, index) => (
-                    <motion.div
-                      key={post.slug}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.45, delay: index * 0.08 }}
-                    >
-                      <BlogCard {...post} />
-                    </motion.div>
-                  ))}
-                </SimpleGrid>
-              )}
-            </Stack>
+          {/* All filtered posts */}
+          {filteredPosts.length > 0 ? (
+            <Grid gutter="lg">
+              {filteredPosts.map((post, index) => (
+                <Grid.Col
+                  key={post.slug}
+                  span={index === 0 ? 12 : { base: 12, sm: 6, lg: 4 }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: index * 0.06 }}
+                    style={{ height: '100%' }}
+                  >
+                    <BlogCard {...post} featured={index === 0} />
+                  </motion.div>
+                </Grid.Col>
+              ))}
+            </Grid>
           ) : (
             <Box
               py={64}

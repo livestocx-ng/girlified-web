@@ -49,6 +49,30 @@ export const researchPapers = [
 
 export const blogPosts = [
   {
+    slug: 'm-ventures-accelerator',
+    title: 'Girlified Selected for the M Ventures Accelerator',
+    excerpt:
+      'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+    category: 'Partnership',
+    readTime: '5 min read',
+  },
+  {
+    slug: 'girlified-x-mit',
+    title: 'Girlified × MIT Sloan SEID Partnership',
+    excerpt:
+      'Strategic collaboration to build a fundraising and financial growth roadmap for continental scale-up.',
+    category: 'Partnership',
+    readTime: '4 min read',
+  },
+  {
+    slug: '10-million-sanitary-napkins',
+    title: '10 Million Sanitary Napkins Every Year — Now Achievable',
+    excerpt:
+      'Our new automated machine produces 30,000 pads daily, scaling impact 50× and cutting plastic waste.',
+    category: 'Innovation',
+    readTime: '5 min read',
+  },
+  {
     slug: 'girlified-women-and-girls-engagement',
     title: 'Women & Girls Engagement / Focus Group Discussion',
     excerpt: 'Field insights from 82 women and girls in Rankyeng Village, Jos South LGA.',
@@ -58,25 +82,17 @@ export const blogPosts = [
   {
     slug: 'empowering-girls-on-international-day-of-the-girl-child',
     title: 'Empowering Girls on International Day of the Girl Child',
-    excerpt: '523 girls reached with menstrual hygiene education, environmental awareness, and eco-friendly pad distribution.',
+    excerpt:
+      '523 girls reached with menstrual hygiene education, environmental awareness, and eco-friendly pad distribution.',
     category: 'Impact',
     readTime: '6 min read',
   },
-  {
-    slug: '10-million-sanitary-napkins',
-    title: '10 Million Sanitary Napkins Every Year — Now Achievable',
-    excerpt: 'Our new automated machine produces 30,000 pads daily, scaling impact 50× and cutting plastic waste.',
-    category: 'Innovation',
-    readTime: '5 min read',
-  },
-  {
-    slug: 'girlified-x-mit',
-    title: 'Girlified × MIT Sloan SEID Partnership',
-    excerpt: 'Strategic collaboration to build a fundraising and financial growth roadmap for continental scale-up.',
-    category: 'Partnership',
-    readTime: '4 min read',
-  },
 ];
+
+/** Every unique category used across blog posts (stable order of first appearance). */
+export const blogCategories = Array.from(
+  new Set(blogPosts.map((post) => post.category))
+);
 
 export const platformFaqs = [
   {
@@ -136,7 +152,7 @@ export const teamMembers = [
   {
     name: 'Nwagboso Prayer',
     role: 'Co-Founder & Girls Advocate',
-    bio: "As a girls and women advocate, I am very concerned about period poverty and the harmful impact plastics from sanitary pads have on our ecosystem and oceans. For that reason, we have manufactured Girlified to counter both plastic pollution and period poverty.",
+    bio: 'As a girls and women advocate, I am very concerned about period poverty and the harmful impact plastics from sanitary pads have on our ecosystem and oceans. For that reason, we have manufactured Girlified to counter both plastic pollution and period poverty.',
     extendedBio:
       'Founder & CEO of Naza Agape Foundation, Prayer has impacted 18,000+ lives through education, welfare, and empowerment programmes across Nigeria and beyond. She leads Girlified community outreach, free pad distributions, and menstrual hygiene sensitization for underserved girls and women.',
     quote:
@@ -148,14 +164,15 @@ export const teamMembers = [
     ],
     credentials: ['BBC News Africa', 'BusinessDay Nigeria', 'State Chair G100 Nigeria'],
     linkedin: 'https://linkedin.com/in/prayer-nwagboso-54461a174',
-    image: 'https://girlified.com.ng/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-09-at-10.00.54-AM.jpg',
+    image:
+      'https://girlified.com.ng/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-09-at-10.00.54-AM.jpg',
   },
   {
     name: 'Oghenekevwe William',
     role: 'Co-Founder & Lead Researcher',
     bio: 'I am passionate about climate change and am an entrepreneur who has put all my years of experience working with women and girls into developing eco-friendly sanitary pads. Girlified is rightly positioned to positively address the perennial issues of plastic pollution and period poverty.',
     extendedBio:
-      'With a background in physics from the University of Jos, Oghenekevwe leads fibre-to-fluff R&D converting banana pseudostem and natural cotton into absorbent cores. He is Regional Director of Naza Agape Foundation and an O\'Shaughnessy Fellowship grantee.',
+      "With a background in physics from the University of Jos, Oghenekevwe leads fibre-to-fluff R&D converting banana pseudostem and natural cotton into absorbent cores. He is Regional Director of Naza Agape Foundation and an O'Shaughnessy Fellowship grantee.",
     quote:
       'Our mission is to eliminate plastics from pad usage while empowering women in the process.',
     highlights: [
@@ -215,8 +232,8 @@ export const Partners: Partner[] = [
     detail: 'AfriPlastics Prize Winner for reduction of plastic pollution',
   },
   {
-    name: 'O\'Shaughnessy Fellowship',
-    image: '/images/sponsors/o\'shaugnessy.jpeg',
+    name: "O'Shaughnessy Fellowship",
+    image: "/images/sponsors/o'shaugnessy.jpeg",
     detail: 'Fellowship backing climate tech innovations',
   },
   {
