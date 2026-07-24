@@ -271,6 +271,26 @@ export const Partners: Partner[] = [
     image: '/images/sponsors/undp.jpeg',
     detail: 'United Nations Development Programme',
   },
+  {
+    name: 'Bop Inc',
+    image: '/images/sponsors/bopinc-logo.svg',
+    detail: 'Base of the Pyramid Innovation Center',
+  },
+  {
+    name: 'CapitalM',
+    image: '/images/sponsors/capitalM.svg',
+    detail: 'The Market-Led Moonshot for Menstrual Health',
+  },
+  {
+    name: 'Hystra',
+    image: '/images/sponsors/hystra_logo.jpeg',
+    detail: 'Hybrid Strategies Consulting',
+  },
+  {
+    name: 'SHFund',
+    image: '/images/sponsors/sanitation_and_health_fund.svg',
+    detail: 'Sanitation and Health Fund',
+  },
 ];
 
 export const Sponsors = Partners;
