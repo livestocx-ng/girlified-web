@@ -1,44 +1,9 @@
 import type { Metadata } from 'next';
 
-const title = 'Girlified Selected for the M Ventures Accelerator';
-const description =
-  'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.';
-const url = 'https://girlified.co/blog/m-ventures-accelerator';
-
-const ogImages = [
-  {
-    url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    secureUrl:
-      'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    width: 300,
-    height: 200,
-  },
-  {
-    url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    secureUrl:
-      'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    width: 300,
-    height: 300,
-  },
-  {
-    url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    secureUrl:
-      'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    alt: 'Girlified Banner',
-    width: 1200,
-    height: 630,
-  },
-  {
-    url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    secureUrl:
-      'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
-    alt: 'Girlified Banner',
-  },
-];
-
 export const metadata: Metadata = {
-  title: `Girlified - ${title}`,
-  description,
+  title: 'Girlified - Girlified Selected for the M Ventures Accelerator',
+  description:
+    'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
   keywords: [
     'Girlified',
     'M Ventures',
@@ -51,24 +16,84 @@ export const metadata: Metadata = {
     'Menstrual Health',
     'West Africa',
     'Nigeria',
-    'United Nations'
+    'United Nations',
   ],
   openGraph: {
-    title,
-    description,
-    url,
+    title: 'Girlified Selected for the M Ventures Accelerator',
+    description:
+      'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+    url: 'https://girlified.co/blog/m-ventures-accelerator',
     siteName: 'Girlified',
     type: 'article',
     publishedTime: '2026-07-24',
-    images: ogImages,
+    images: [
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        width: 300,
+        height: 200,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        width: 300,
+        height: 300,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        alt: 'Girlified Banner',
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        alt: 'Girlified Banner',
+      },
+    ],
   },
   twitter: {
     card: 'summary',
     site: '@girlified',
     creator: '@girlified',
-    title,
-    description,
-    images: ogImages,
+    title: 'Girlified Selected for the M Ventures Accelerator',
+    description:
+      'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+    images: [
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        width: 300,
+        height: 200,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        width: 300,
+        height: 300,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        alt: 'Girlified Banner',
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        secureUrl:
+          'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/aee0c7bf-580d-417a-9007-cf7ca6b8dd6c.png',
+        alt: 'Girlified Banner',
+      },
+    ],
   },
 };
 
