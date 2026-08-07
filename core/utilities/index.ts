@@ -24,6 +24,7 @@ export const productDisplayTypes: ProductDisplayType[] = [
 export const navLinks = [
   { link: '/our-story', label: 'Our Story', target: '' },
   { link: '/research', label: 'Research', target: '' },
+  { link: '/bnpl', label: 'BNPL', target: '' },
   { link: '/smart-pad', label: 'Smart Pad', target: '' },
   { link: 'https://saifeai.girlified.co', label: 'SaifeAI', target: '_blank' },
   // { link: '/about-us', label: 'About Us', target: '' },

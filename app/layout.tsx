@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outfit, Inter } from 'next/font/google';
+import { Fraunces, Figtree } from 'next/font/google';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
@@ -13,16 +13,16 @@ import { theme } from '@/core/themes';
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
 import { ClientLayout } from '@/core/components/layout/clientLayout';
 
-const outfit = Outfit({
+const fraunces = Fraunces({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-outfit',
+  variable: '--font-fraunces',
 });
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-figtree',
 });
 
 export const metadata = {
@@ -33,7 +33,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: any }) {
   return (
-    <html lang="en" {...mantineHtmlProps} className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="en" {...mantineHtmlProps} className={`${fraunces.variable} ${figtree.variable}`}>
       <head>
         <ColorSchemeScript />
         <link rel="shortcut icon" href="/favicon.ico" />

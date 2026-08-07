@@ -56,9 +56,9 @@ export const theme = createTheme({
 
     return defaultResolvedColors;
   },
-  fontFamily: 'var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif',
+  fontFamily: 'var(--font-figtree), -apple-system, BlinkMacSystemFont, sans-serif',
   headings: {
-    fontFamily: 'var(--font-outfit), sans-serif',
+    fontFamily: 'var(--font-fraunces), serif',
     sizes: {
       h1: { fontSize: rem(36) },
     },
@@ -181,7 +181,7 @@ export const theme = createTheme({
           '&:active': {
             transform: 'none',
           },
-          fontFamily: 'var(--font-outfit), sans-serif',
+          fontFamily: 'var(--font-fraunces), serif',
         },
       },
     },
