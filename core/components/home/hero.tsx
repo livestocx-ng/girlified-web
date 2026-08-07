@@ -356,43 +356,92 @@ const Hero = () => {
                   {/* CTAs */}
                   <motion.div
                     variants={ctaGroupVariants}
-                    style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center' }}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 16,
+                      alignItems: 'flex-start',
+                    }}
                   >
+                    <Box
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 16,
+                        alignItems: 'center',
+                      }}
+                    >
+                      <motion.div variants={ctaItemVariants}>
+                        <Link href="/contact-us">
+                          <Box
+                            component="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              padding: '16px 36px',
+                              background: 'linear-gradient(135deg, #FF007F 0%, #CC0066 100%)',
+                              border: 'none',
+                              borderRadius: 100,
+                              color: 'white',
+                              fontWeight: 600,
+                              fontSize: 15,
+                              letterSpacing: '-0.3px',
+                              cursor: 'pointer',
+                              boxShadow: '0 4px 25px rgba(255, 0, 127, 0.45)',
+                              transition: 'transform 0.2s, box-shadow 0.2s',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'translateY(-2px)';
+                              e.currentTarget.style.boxShadow = '0 6px 30px rgba(255, 0, 127, 0.65)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'translateY(0)';
+                              e.currentTarget.style.boxShadow = '0 4px 25px rgba(255, 0, 127, 0.45)';
+                            }}
+                          >
+                            Shop Sanitary Pads <IconArrowRight size={16} />
+                          </Box>
+                        </Link>
+                      </motion.div>
+                      <motion.div variants={ctaItemVariants}>
+                        <Link href="/smart-pad">
+                          <Box
+                            component="button"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              padding: '15px 36px',
+                              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                              border: '1px solid rgba(255, 0, 127, 0.4)',
+                              borderRadius: 100,
+                              color: '#FFB7D5',
+                              fontWeight: 600,
+                              fontSize: 15,
+                              letterSpacing: '-0.3px',
+                              cursor: 'pointer',
+                              WebkitBackdropFilter: 'blur(12px)',
+                              backdropFilter: 'blur(12px)',
+                              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                              transition: 'all 0.2s',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = 'rgba(255, 0, 127, 0.2)';
+                              e.currentTarget.style.borderColor = '#FF007F';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                              e.currentTarget.style.borderColor = 'rgba(255, 0, 127, 0.4)';
+                            }}
+                          >
+                            Explore Smart Pad
+                          </Box>
+                        </Link>
+                      </motion.div>
+                    </Box>
                     <motion.div variants={ctaItemVariants}>
-                      <Link href="/contact-us">
-                        <Box
-                          component="button"
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 8,
-                            padding: '16px 36px',
-                            background: 'linear-gradient(135deg, #FF007F 0%, #CC0066 100%)',
-                            border: 'none',
-                            borderRadius: 100,
-                            color: 'white',
-                            fontWeight: 600,
-                            fontSize: 15,
-                            letterSpacing: '-0.3px',
-                            cursor: 'pointer',
-                            boxShadow: '0 4px 25px rgba(255, 0, 127, 0.45)',
-                            transition: 'transform 0.2s, box-shadow 0.2s',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 6px 30px rgba(255, 0, 127, 0.65)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 25px rgba(255, 0, 127, 0.45)';
-                          }}
-                        >
-                          Shop Sanitary Pads <IconArrowRight size={16} />
-                        </Box>
-                      </Link>
-                    </motion.div>
-                    <motion.div variants={ctaItemVariants}>
-                      <Link href="/smart-pad">
+                      <Link href="/bnpl">
                         <Box
                           component="button"
                           style={{
@@ -400,29 +449,29 @@ const Hero = () => {
                             alignItems: 'center',
                             gap: 8,
                             padding: '15px 36px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                            border: '1px solid rgba(255, 0, 127, 0.4)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                            border: '1px solid rgba(255, 255, 255, 0.95)',
                             borderRadius: 100,
-                            color: '#FFB7D5',
+                            color: '#0C090B',
                             fontWeight: 600,
                             fontSize: 15,
                             letterSpacing: '-0.3px',
                             cursor: 'pointer',
-                            WebkitBackdropFilter: 'blur(12px)',
-                            backdropFilter: 'blur(12px)',
-                            boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.18)',
                             transition: 'all 0.2s',
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255, 0, 127, 0.2)';
-                            e.currentTarget.style.borderColor = '#FF007F';
+                            e.currentTarget.style.backgroundColor = '#FFFFFF';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.22)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-                            e.currentTarget.style.borderColor = 'rgba(255, 0, 127, 0.4)';
+                            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.92)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.18)';
                           }}
                         >
-                          Explore Smart Pad
+                          Buy Now Pay Later
                         </Box>
                       </Link>
                     </motion.div>
