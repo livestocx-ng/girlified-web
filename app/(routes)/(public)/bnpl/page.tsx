@@ -3,7 +3,13 @@
 import { Playfair_Display } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IconDeviceMobile, IconPackage, IconReceipt, IconUserCheck } from '@tabler/icons-react';
+import {
+  IconBrandWhatsapp,
+  IconDeviceMobile,
+  IconPackage,
+  IconReceipt,
+  IconUserCheck,
+} from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Anchor, Box, Container, Grid, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
 
@@ -19,6 +25,13 @@ const SLATE = '#0C090B';
 const SURFACE = '#FBF6EE';
 const INK = '#0C090B';
 const MUTED = 'rgba(12, 9, 11, 0.68)';
+const WHATSAPP_GREEN = '#25D366';
+
+const WHATSAPP_BNPL_URL =
+  'https://api.whatsapp.com/send?phone=+2348050591941&text=' +
+  encodeURIComponent(
+    "Hi Girlified, I'd like to get started with Buy Now, Pay Later for sanitary pads."
+  );
 
 const howItWorks = [
   {
@@ -144,6 +157,42 @@ const BnplPage = () => {
               >
                 USSD · SMS · WhatsApp
               </Text>
+
+              <Box
+                component="a"
+                href={WHATSAPP_BNPL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with Girlified on WhatsApp about Buy Now, Pay Later"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  alignSelf: 'flex-start',
+                  marginTop: 8,
+                  padding: '14px 28px',
+                  backgroundColor: WHATSAPP_GREEN,
+                  borderRadius: 100,
+                  color: 'white',
+                  fontWeight: 700,
+                  fontSize: 15,
+                  letterSpacing: '-0.2px',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 20px rgba(37, 211, 102, 0.45)',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 28px rgba(37, 211, 102, 0.55)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.45)';
+                }}
+              >
+                <IconBrandWhatsapp size={22} stroke={1.6} />
+                Chat on WhatsApp
+              </Box>
             </Stack>
           </motion.div>
         </Container>
