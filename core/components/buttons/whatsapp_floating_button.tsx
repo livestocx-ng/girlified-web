@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { Box } from '@mantine/core';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
@@ -31,6 +32,12 @@ const girlWalk = {
 };
 
 export function WhatsAppFloatingButton() {
+  const pathname = usePathname();
+
+  if (pathname === '/bnpl' || pathname?.startsWith('/bnpl/')) {
+    return null;
+  }
+
   return (
     <Box
       style={{
