@@ -234,7 +234,7 @@ export default function LocationsMapView() {
 
   if (!apiKey) {
     return (
-      <MapStatus message="Google Maps API key is missing. Set GOOGLE_MAP_API_KEY in your environment." />
+      <MapStatus message="Google Maps API key is missing. Set NEXT_PUBLIC_GOOGLE_MAP_API_KEY in your environment." />
     );
   }
 
