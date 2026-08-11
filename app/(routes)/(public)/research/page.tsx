@@ -1,16 +1,10 @@
 'use client';
 
-import { Playfair_Display } from 'next/font/google';
 import Image from 'next/image';
 import { IconExternalLink, IconFlask } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Badge, Box, Container, SimpleGrid, Stack, Text, Title } from '@mantine/core';
 import { researchPapers } from '@/core/utilities';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 const PINK = '#FF007F';
 const PINK_BORDER = 'rgba(255, 0, 127, 0.14)';
@@ -240,7 +234,7 @@ const ResearchPage = () => {
               <Title
                 order={1}
                 style={{
-                  fontFamily: playfair.style.fontFamily,
+                  fontFamily: "var(--font-fraunces), serif",
                   fontSize: 'clamp(2.2rem, 4.8vw, 3.4rem)',
                   fontWeight: 700,
                   letterSpacing: '-0.6px',
@@ -280,7 +274,7 @@ const ResearchPage = () => {
             <Title
               order={2}
               style={{
-                fontFamily: playfair.style.fontFamily,
+                fontFamily: "var(--font-fraunces), serif",
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 color: INK,
               }}

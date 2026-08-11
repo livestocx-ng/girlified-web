@@ -1,15 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { Playfair_Display } from 'next/font/google';
 import { IconCalendar, IconClock } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Anchor, Badge, Box, Container, Group, Stack, Text, Title } from '@mantine/core';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 export const ARTICLE_LINK = '#0044CC';
 export const ARTICLE_BODY = '#555555';
@@ -148,7 +142,7 @@ export const BlogHero = ({
           <Title
             order={1}
             style={{
-              fontFamily: playfair.style.fontFamily,
+              fontFamily: "var(--font-fraunces), serif",
               fontSize: 'clamp(1.75rem, 4.2vw, 3rem)',
               fontWeight: 700,
               letterSpacing: '-0.5px',

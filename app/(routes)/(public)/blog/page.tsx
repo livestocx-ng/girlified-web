@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Playfair_Display } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { IconArrowRight, IconClock, IconNews } from '@tabler/icons-react';
 import {
@@ -19,11 +18,6 @@ import {
   UnstyledButton,
 } from '@mantine/core';
 import { blogCategories, blogPosts } from '@/core/utilities';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 const PINK = '#FF007F';
 const PINK_LIGHT = 'rgba(255, 0, 127, 0.08)';
@@ -142,7 +136,7 @@ const BlogCard = ({
             order={featured ? 2 : 3}
             lineClamp={featured ? 2 : 3}
             style={{
-              fontFamily: playfair.style.fontFamily,
+              fontFamily: "var(--font-fraunces), serif",
               fontSize: featured ? 'clamp(1.25rem, 2.5vw, 1.65rem)' : '1.1rem',
               fontWeight: 700,
               color: INK,
@@ -253,7 +247,7 @@ const BlogPage = () => {
               <Title
                 order={1}
                 style={{
-                  fontFamily: playfair.style.fontFamily,
+                  fontFamily: "var(--font-fraunces), serif",
                   fontSize: 'clamp(2rem, 4.5vw, 3rem)',
                   fontWeight: 700,
                   letterSpacing: '-0.6px',
@@ -343,7 +337,7 @@ const BlogPage = () => {
             <Grid gutter="xl" align="center">
               <Grid.Col span={{ base: 12, md: 8 }}>
                 <Stack gap="sm">
-                  <Title order={2} style={{ fontFamily: playfair.style.fontFamily, fontSize: '1.4rem', color: 'white' }}>
+                  <Title order={2} style={{ fontFamily: "var(--font-fraunces), serif", fontSize: '1.4rem', color: 'white' }}>
                     Want to partner or support our mission?
                   </Title>
                   <Text style={{ lineHeight: 1.65, color: 'rgba(255, 255, 255, 0.85)' }}>

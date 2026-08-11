@@ -234,7 +234,7 @@ const WhyChooseSection = () => {
                   lineHeight: 1.1,
                   letterSpacing: '-1.5px',
                   color: '#0C090B',
-                  fontFamily: 'Playfair Display, Georgia, serif',
+                  fontFamily: 'var(--font-fraunces), Georgia, serif',
                 }}
               >
                 Why Choose

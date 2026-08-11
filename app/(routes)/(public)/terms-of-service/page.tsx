@@ -1,13 +1,7 @@
 'use client';
 
-import { Playfair_Display } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { Box, Container, List, Stack, Text, Title } from '@mantine/core';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 const SLATE_BORDER = 'rgba(51, 65, 85, 0.14)';
 const INK = '#0C090B';
@@ -386,7 +380,7 @@ const TermsOfServicePage = () => {
               <Title
                 order={1}
                 style={{
-                  fontFamily: playfair.style.fontFamily,
+                  fontFamily: "var(--font-fraunces), serif",
                   fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                   fontWeight: 700,
                   letterSpacing: '-0.5px',
@@ -413,7 +407,7 @@ const TermsOfServicePage = () => {
                     <Title
                       order={2}
                       style={{
-                        fontFamily: playfair.style.fontFamily,
+                        fontFamily: "var(--font-fraunces), serif",
                         fontSize: '1.25rem',
                         fontWeight: 700,
                         color: INK,

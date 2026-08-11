@@ -1,6 +1,5 @@
 'use client';
 
-import { Playfair_Display } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -12,11 +11,6 @@ import {
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Anchor, Box, Container, Grid, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
 
 const ACCENT = '#FF007F';
 const ACCENT_SOFT = 'rgba(255, 0, 127, 0.08)';
@@ -133,7 +127,7 @@ const BnplPage = () => {
               <Title
                 order={1}
                 style={{
-                  fontFamily: playfair.style.fontFamily,
+                  fontFamily: "var(--font-fraunces), serif",
                   fontSize: 'clamp(2rem, 5vw, 3.25rem)',
                   fontWeight: 700,
                   letterSpacing: '-0.5px',
@@ -226,7 +220,7 @@ const BnplPage = () => {
                     <Title
                       order={2}
                       style={{
-                        fontFamily: playfair.style.fontFamily,
+                        fontFamily: "var(--font-fraunces), serif",
                         fontSize: 'clamp(1.55rem, 3vw, 2.15rem)',
                         fontWeight: 700,
                         letterSpacing: '-0.4px',
@@ -309,7 +303,7 @@ const BnplPage = () => {
                             fw={800}
                             c={ACCENT}
                             style={{
-                              fontFamily: playfair.style.fontFamily,
+                              fontFamily: "var(--font-fraunces), serif",
                               fontSize: '1.25rem',
                               letterSpacing: '-0.5px',
                             }}
@@ -350,7 +344,7 @@ const BnplPage = () => {
                 <Title
                   order={2}
                   style={{
-                    fontFamily: playfair.style.fontFamily,
+                    fontFamily: "var(--font-fraunces), serif",
                     fontSize: 'clamp(1.55rem, 3vw, 2.1rem)',
                     fontWeight: 700,
                     letterSpacing: '-0.4px',
