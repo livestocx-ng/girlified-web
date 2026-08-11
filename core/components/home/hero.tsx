@@ -495,6 +495,7 @@ const Hero = () => {
           backdropFilter: 'blur(10px)',
           zIndex: 2,
           position: 'relative',
+          backgroundColor: '#ffffff',
         }}
       >
         <div
@@ -512,7 +513,7 @@ const Hero = () => {
           }}
         />
 
-        <Container size="xl">
+        <Container  size="xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

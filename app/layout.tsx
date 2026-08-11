@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import { Fraunces, Figtree } from 'next/font/google';
 
 import '@mantine/core/styles.css';
@@ -36,6 +37,9 @@ export default function RootLayout({ children }: { children: any }) {
     <html lang="en" {...mantineHtmlProps} className={`${fraunces.variable} ${figtree.variable}`}>
       <head>
         <ColorSchemeScript />
+        <Script id="gm-auth-failure" strategy="beforeInteractive">
+          {`window.gm_authFailure=function(){};`}
+        </Script>
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
           name="viewport"

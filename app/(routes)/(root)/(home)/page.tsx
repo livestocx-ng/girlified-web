@@ -2,6 +2,7 @@
 
 import { Box } from '@mantine/core';
 import Hero from '@/core/components/home/hero';
+import LocationsMapSection from '@/core/components/home/locations_map_section';
 import FeaturedSection from '@/core/components/home/featured_section';
 import WhyChooseSection from '@/core/components/home/why_choose_section';
 import ProblemSection from '@/core/components/home/problem_section';
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <Box>
       <Hero />
+      <LocationsMapSection />
       <FeaturedSection />
       <WhyChooseSection />
       <TechnologySection />

@@ -7,3 +7,13 @@
 body {
   background-color: #FBF6EE !important;
 }
+
+/* Hide Google Maps auth/billing error card (not a standard dialog role) */
+.gm-err-container {
+  display: none !important;
+}
+
+.girlified-locations-map a[href*="cloud.google.com/maps-platform"],
+.girlified-locations-map a[href*="developers.google.com/maps/documentation/javascript/error-messages"] {
+  display: none !important;
+}
