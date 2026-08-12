@@ -237,7 +237,7 @@ const BnplPage = () => {
                 >
                   <Stack gap="sm">
                     <Group gap="xs">
-                      <IconDeviceMobile size={18} color={ACCENT} />
+                      {/* <IconDeviceMobile size={18} color={ACCENT} /> */}
                       <Text
                         fw={700}
                         size="sm"
