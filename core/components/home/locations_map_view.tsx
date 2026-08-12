@@ -5,8 +5,10 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Anchor, Box, Stack, Text } from '@mantine/core';
 import { IconMapPin, IconPhone } from '@tabler/icons-react';
 import {
+  getFocusForQuery,
   getMapBounds,
   MAP_CENTER,
+  type MapFocusEventDetail,
   type RetailLocation,
   retailLocations,
 } from '@/core/utilities/retailLocations';
@@ -14,6 +16,7 @@ import {
 const PINK = '#FF007F';
 const INK = '#0C090B';
 const MUTED = 'rgba(12, 9, 11, 0.68)';
+const PLACES_LIBRARIES: ('places')[] = ['places'];
 
 const mapContainerStyle = { width: '100%', height: '100%' };
 
@@ -190,21 +193,75 @@ function MapStatus({ message }: { message: string }) {
   );
 }
 
-export default function LocationsMapView() {
+type LocationsMapViewProps = {
+  focusTarget?: MapFocusEventDetail | null;
+  focusKey?: number;
+};
+
+function nearestRetailLocation(lat: number, lng: number): RetailLocation | null {
+  if (retailLocations.length === 0) {
+    return null;
+  }
+
+  let nearest = retailLocations[0];
+  let bestDistance = Number.POSITIVE_INFINITY;
+
+  for (const location of retailLocations) {
+    const distance = (location.lat - lat) ** 2 + (location.lng - lng) ** 2;
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      nearest = location;
+    }
+  }
+
+  return nearest;
+}
+
+function focusMapOnTarget(mapInstance: google.maps.Map, target: MapFocusEventDetail) {
+  if (typeof target.lat === 'number' && typeof target.lng === 'number') {
+    mapInstance.panTo({ lat: target.lat, lng: target.lng });
+    mapInstance.setZoom(13);
+    return nearestRetailLocation(target.lat, target.lng);
+  }
+
+  const focus = getFocusForQuery(target.query);
+  if (!focus) {
+    return null;
+  }
+
+  if (focus.matches.length === 1) {
+    mapInstance.panTo({ lat: focus.matches[0].lat, lng: focus.matches[0].lng });
+    mapInstance.setZoom(15);
+  } else {
+    const [[south, west], [north, east]] = focus.bounds;
+    const bounds = new google.maps.LatLngBounds(
+      { lat: south, lng: west },
+      { lat: north, lng: east }
+    );
+    mapInstance.fitBounds(bounds, 60);
+  }
+
+  return focus.matches[0] ?? null;
+}
+
+export default function LocationsMapView({ focusTarget, focusKey }: LocationsMapViewProps) {
   useSuppressGoogleMapsAuthDialog();
 
   const apiKey = (process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY ?? '').replace(/^['"]|['"]$/g, '');
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'girlified-google-maps',
     googleMapsApiKey: apiKey,
+    libraries: PLACES_LIBRARIES,
   });
 
   const [hoveredLocation, setHoveredLocation] = useState<RetailLocation | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
 
   const center = useMemo(() => ({ lat: MAP_CENTER[0], lng: MAP_CENTER[1] }), []);
 
   const onLoad = useCallback((mapInstance: google.maps.Map) => {
+    setMap(mapInstance);
     const [[south, west], [north, east]] = getMapBounds();
     const bounds = new google.maps.LatLngBounds(
       { lat: south, lng: west },
@@ -216,6 +273,18 @@ export default function LocationsMapView() {
     window.setTimeout(dismissGoogleMapsAuthDialog, 500);
     window.setTimeout(dismissGoogleMapsAuthDialog, 1500);
   }, []);
+
+  useEffect(() => {
+    if (!map || !focusTarget?.query?.trim()) {
+      return;
+    }
+
+    const match = focusMapOnTarget(map, focusTarget);
+    if (match) {
+      setHoveredLocation(match);
+      setActiveId(match.id);
+    }
+  }, [map, focusTarget, focusKey]);
 
   const handleHover = (location: RetailLocation) => {
     setHoveredLocation(location);
@@ -233,7 +302,7 @@ export default function LocationsMapView() {
   };
 
   if (!apiKey) {
-    return null; (
+    return (
       <MapStatus message="Google Maps API key is missing. Set NEXT_PUBLIC_GOOGLE_MAP_API_KEY in your environment." />
     );
   }

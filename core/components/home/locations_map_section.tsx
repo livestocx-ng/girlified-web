@@ -1,12 +1,48 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import LocationsMap from './locations_map';
 import { Box, Container, Stack, Text, Title } from '@mantine/core';
+import { MAP_FOCUS_EVENT, type MapFocusEventDetail } from '@/core/utilities/retailLocations';
 
 const SURFACE = '#FBF6EE';
 const MUTED = 'rgba(12, 9, 11, 0.68)';
 
 export default function LocationsMapSection() {
+  const [focusTarget, setFocusTarget] = useState<MapFocusEventDetail | null>(null);
+  const [focusKey, setFocusKey] = useState(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const area = params.get('area');
+    const lat = Number(params.get('lat'));
+    const lng = Number(params.get('lng'));
+
+    if (area?.trim()) {
+      setFocusTarget({
+        query: area.trim(),
+        lat: Number.isFinite(lat) ? lat : undefined,
+        lng: Number.isFinite(lng) ? lng : undefined,
+      });
+      setFocusKey((key) => key + 1);
+    }
+
+    const onFocus = (event: Event) => {
+      const detail = (event as CustomEvent<MapFocusEventDetail>).detail;
+      if (detail?.query?.trim()) {
+        setFocusTarget({
+          query: detail.query.trim(),
+          lat: detail.lat,
+          lng: detail.lng,
+        });
+        setFocusKey((key) => key + 1);
+      }
+    };
+
+    window.addEventListener(MAP_FOCUS_EVENT, onFocus);
+    return () => window.removeEventListener(MAP_FOCUS_EVENT, onFocus);
+  }, []);
+
   return (
     <Box
       component="section"
@@ -40,7 +76,7 @@ export default function LocationsMapSection() {
           </Stack>
 
           <Box h={{ base: 360, md: 580 }} w="100%">
-            <LocationsMap />
+            <LocationsMap focusTarget={focusTarget} focusKey={focusKey} />
           </Box>
         </Stack>
       </Container>

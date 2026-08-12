@@ -10,7 +10,19 @@ import {
   IconUserCheck,
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-import { Anchor, Box, Container, Grid, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import {
+  Anchor,
+  Box,
+  Container,
+  Grid,
+  Group,
+  SimpleGrid,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core';
+import LocationSearch from '@/core/components/home/location_search';
+import LocationsMapSection from '@/core/components/home/locations_map_section';
 
 const ACCENT = '#FF007F';
 const ACCENT_SOFT = 'rgba(255, 0, 127, 0.08)';
@@ -92,105 +104,124 @@ const BnplPage = () => {
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'flex-start',
-          overflow: 'hidden',
+          overflow: 'visible',
+          zIndex: 2,
         }}
       >
-        <Image
-          src="/images/bnpl/bnpl-hero.jpg"
-          alt="Young woman in a community store dialing a USSD code on a feature phone"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(180deg, rgba(12, 9, 11, 0.1) 0%, rgba(12, 9, 11, 0.25) 45%, rgba(12, 9, 11, 0.75) 100%)',
-            pointerEvents: 'none',
-          }}
-        />
+        <Box style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
+          <Image
+            src="/images/bnpl/bnpl-hero.jpg"
+            alt="Young woman in a community store dialing a USSD code on a feature phone"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
+          />
+          <Box
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(180deg, rgba(12, 9, 11, 0.1) 0%, rgba(12, 9, 11, 0.25) 45%, rgba(12, 9, 11, 0.75) 100%)',
+              pointerEvents: 'none',
+            }}
+          />
+        </Box>
 
         <Container
           size="xl"
           pb={{ base: 140, sm: 120 }}
-          style={{ position: 'relative', width: '100%' }}
+          style={{ position: 'relative', width: '100%', zIndex: 3 }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
-          >
-            <Stack gap="md" maw={720} ta="left">
-              <Title
-                order={1}
-                style={{
-                  fontFamily: "var(--font-fraunces), serif",
-                  fontSize: 'clamp(2rem, 5vw, 3.25rem)',
-                  fontWeight: 700,
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.1,
-                  color: 'white',
-                }}
+          <Grid gutter={{ base: 28, md: 40 }} align="flex-end">
+            <Grid.Col span={{ base: 12, md: 7 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65 }}
               >
-                Buy Now, Pay Later
-              </Title>
+                <Stack gap="md" maw={720} ta="left">
+                  <Title
+                    order={1}
+                    style={{
+                      fontFamily: 'var(--font-fraunces), serif',
+                      fontSize: 'clamp(2rem, 5vw, 3.25rem)',
+                      fontWeight: 700,
+                      letterSpacing: '-0.5px',
+                      lineHeight: 1.1,
+                      color: 'white',
+                    }}
+                  >
+                    Buy Now, Pay Later
+                  </Title>
 
-              <Text size="lg" c="rgba(255,255,255,0.82)" maw={580} style={{ lineHeight: 1.55 }}>
-                Affordable access to essential menstrual products through Buy-Now-Pay-Later, powered
-                by a last-mile community distribution network.
-              </Text>
+                  <Text size="lg" c="rgba(255,255,255,0.82)" maw={580} style={{ lineHeight: 1.55 }}>
+                    Affordable access to essential menstrual products through Buy-Now-Pay-Later,
+                    powered by a last-mile community distribution network.
+                  </Text>
 
-              <Text
-                size="sm"
-                fw={600}
-                tt="uppercase"
-                style={{ letterSpacing: '0.1em', color: 'rgba(255,255,255,0.65)' }}
+                  <Text
+                    size="sm"
+                    fw={600}
+                    tt="uppercase"
+                    style={{ letterSpacing: '0.1em', color: 'rgba(255,255,255,0.65)' }}
+                  >
+                    USSD · SMS · WhatsApp
+                  </Text>
+
+                  <Box
+                    component="a"
+                    href={WHATSAPP_BNPL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat with Girlified on WhatsApp about Buy Now, Pay Later"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 10,
+                      alignSelf: 'flex-start',
+                      marginTop: 8,
+                      padding: '14px 28px',
+                      backgroundColor: WHATSAPP_GREEN,
+                      borderRadius: 100,
+                      color: 'white',
+                      fontWeight: 700,
+                      fontSize: 15,
+                      letterSpacing: '-0.2px',
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 20px rgba(37, 211, 102, 0.45)',
+                      transition: 'transform 0.2s, box-shadow 0.2s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 28px rgba(37, 211, 102, 0.55)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.45)';
+                    }}
+                  >
+                    <IconBrandWhatsapp size={22} stroke={1.6} />
+                    Chat on WhatsApp
+                  </Box>
+                </Stack>
+              </motion.div>
+            </Grid.Col>
+
+            <Grid.Col span={{ base: 12, md: 5 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.1 }}
               >
-                USSD · SMS · WhatsApp
-              </Text>
-
-              <Box
-                component="a"
-                href={WHATSAPP_BNPL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat with Girlified on WhatsApp about Buy Now, Pay Later"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  alignSelf: 'flex-start',
-                  marginTop: 8,
-                  padding: '14px 28px',
-                  backgroundColor: WHATSAPP_GREEN,
-                  borderRadius: 100,
-                  color: 'white',
-                  fontWeight: 700,
-                  fontSize: 15,
-                  letterSpacing: '-0.2px',
-                  textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(37, 211, 102, 0.45)',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 28px rgba(37, 211, 102, 0.55)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.45)';
-                }}
-              >
-                <IconBrandWhatsapp size={22} stroke={1.6} />
-                Chat on WhatsApp
-              </Box>
-            </Stack>
-          </motion.div>
+                <LocationSearch />
+              </motion.div>
+            </Grid.Col>
+          </Grid>
         </Container>
       </Box>
+
+      <LocationsMapSection />
 
       {/* BNPL feature */}
       <Box component="section" style={{ backgroundColor: SURFACE }}>
@@ -220,7 +251,7 @@ const BnplPage = () => {
                     <Title
                       order={2}
                       style={{
-                        fontFamily: "var(--font-fraunces), serif",
+                        fontFamily: 'var(--font-fraunces), serif',
                         fontSize: 'clamp(1.55rem, 3vw, 2.15rem)',
                         fontWeight: 700,
                         letterSpacing: '-0.4px',
@@ -248,15 +279,14 @@ const BnplPage = () => {
                       manageable installments.
                     </BodyText>
                     <BodyText>
-                      Sign up on USSD, SMS, or WhatsApp with your National Identification Number (NIN),
-                      no smartphone or internet required. A nearby community retailer fulfills your
-                      order, while our credit system checks eligibility and tracks repayment in the
-                      background.
+                      Sign up on USSD, SMS, or WhatsApp with your National Identification Number
+                      (NIN), no smartphone or internet required. A nearby community retailer
+                      fulfills your order, while our credit system checks eligibility and tracks
+                      repayment in the background.
                     </BodyText>
                     <BodyText>
                       The model supports local shops instead of cutting them out. To date, it has
-                      impacted over 70,000 women and girls, with over 2 million sanitary pads
-                      sold.
+                      impacted over 70,000 women and girls, with over 2 million sanitary pads sold.
                     </BodyText>
                   </Stack>
                 </motion.div>
@@ -303,7 +333,7 @@ const BnplPage = () => {
                             fw={800}
                             c={ACCENT}
                             style={{
-                              fontFamily: "var(--font-fraunces), serif",
+                              fontFamily: 'var(--font-fraunces), serif',
                               fontSize: '1.25rem',
                               letterSpacing: '-0.5px',
                             }}
@@ -328,10 +358,7 @@ const BnplPage = () => {
       </Box>
 
       {/* Terms of Service */}
-      <Box
-        component="section"
-        style={{ borderTop: `1px solid ${ACCENT_BORDER}` }}
-      >
+      <Box component="section" style={{ borderTop: `1px solid ${ACCENT_BORDER}` }}>
         <Container size="md" py={{ base: 56, sm: 80 }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -344,7 +371,7 @@ const BnplPage = () => {
                 <Title
                   order={2}
                   style={{
-                    fontFamily: "var(--font-fraunces), serif",
+                    fontFamily: 'var(--font-fraunces), serif',
                     fontSize: 'clamp(1.55rem, 3vw, 2.1rem)',
                     fontWeight: 700,
                     letterSpacing: '-0.4px',

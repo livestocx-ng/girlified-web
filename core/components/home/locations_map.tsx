@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ComponentType } from 'react';
 import { Box } from '@mantine/core';
+import type { MapFocusEventDetail } from '@/core/utilities/retailLocations';
 
 declare global {
   interface Window {
@@ -12,6 +13,16 @@ declare global {
 if (typeof window !== 'undefined') {
   window.gm_authFailure = () => undefined;
 }
+
+type LocationsMapProps = {
+  focusTarget?: MapFocusEventDetail | null;
+  focusKey?: number;
+};
+
+type LocationsMapViewProps = {
+  focusTarget?: MapFocusEventDetail | null;
+  focusKey?: number;
+};
 
 function MapLoading() {
   return (
@@ -34,8 +45,8 @@ function MapLoading() {
   );
 }
 
-export default function LocationsMap() {
-  const [MapView, setMapView] = useState<ComponentType | null>(null);
+export default function LocationsMap({ focusTarget, focusKey }: LocationsMapProps) {
+  const [MapView, setMapView] = useState<ComponentType<LocationsMapViewProps> | null>(null);
 
   useEffect(() => {
     window.gm_authFailure = () => undefined;
@@ -48,5 +59,5 @@ export default function LocationsMap() {
     return <MapLoading />;
   }
 
-  return <MapView />;
+  return <MapView focusTarget={focusTarget} focusKey={focusKey} />;
 }

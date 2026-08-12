@@ -1300,3 +1300,58 @@ export const getMapBounds = (): [[number, number], [number, number]] => {
     [Math.max(...lats), Math.max(...lngs)],
   ];
 };
+
+export const getUniqueAreas = (): string[] => {
+  const areas = new Set(retailLocations.map((location) => location.address.trim()).filter(Boolean));
+  return Array.from(areas).sort((a, b) => a.localeCompare(b));
+};
+
+export const findLocationsByQuery = (query: string): RetailLocation[] => {
+  const normalized = query.trim().toLowerCase();
+  if (!normalized) {
+    return [];
+  }
+
+  return retailLocations.filter((location) => {
+    const address = location.address.toLowerCase();
+    const name = location.name.toLowerCase();
+    return address.includes(normalized) || name.includes(normalized);
+  });
+};
+
+export const getFocusForQuery = (
+  query: string
+): {
+  matches: RetailLocation[];
+  center: [number, number];
+  bounds: [[number, number], [number, number]];
+} | null => {
+  const matches = findLocationsByQuery(query);
+  if (matches.length === 0) {
+    return null;
+  }
+
+  const lats = matches.map((location) => location.lat);
+  const lngs = matches.map((location) => location.lng);
+  const south = Math.min(...lats);
+  const north = Math.max(...lats);
+  const west = Math.min(...lngs);
+  const east = Math.max(...lngs);
+
+  return {
+    matches,
+    center: [(south + north) / 2, (west + east) / 2],
+    bounds: [
+      [south, west],
+      [north, east],
+    ],
+  };
+};
+
+export const MAP_FOCUS_EVENT = 'girlified:focus-map-area';
+
+export type MapFocusEventDetail = {
+  query: string;
+  lat?: number;
+  lng?: number;
+};
