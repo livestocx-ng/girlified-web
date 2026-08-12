@@ -154,16 +154,16 @@ function LocationInfoWindow({ location }: { location: RetailLocation }) {
             {location.address}
           </Text>
         </Box>
-        <Box style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+        {/* <Box style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
           <Box pt={2}>
             <IconPhone size={15} color={PINK} />
           </Box>
-          {/* <Text size="sm" c={MUTED}>
+          <Text size="sm" c={MUTED}>
             <Anchor href={`tel:${location.phone}`} c={INK} underline="always" fw={600}>
               {location.phone}
             </Anchor>
-          </Text> */}
-        </Box>
+          </Text>
+        </Box> */}
       </Stack>
     </Box>
   );
@@ -233,7 +233,7 @@ export default function LocationsMapView() {
   };
 
   if (!apiKey) {
-    return (
+    return null; (
       <MapStatus message="Google Maps API key is missing. Set NEXT_PUBLIC_GOOGLE_MAP_API_KEY in your environment." />
     );
   }
@@ -264,7 +264,7 @@ export default function LocationsMapView() {
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
-        zoom={10}
+        zoom={10.5}
         options={mapOptions}
         onLoad={onLoad}
       >
