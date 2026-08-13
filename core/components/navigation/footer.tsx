@@ -132,6 +132,8 @@ function StoreDownloadButton({ href, icon, label, store, alt }: (typeof storeBut
 export function Footer() {
   return (
     <Box
+      component="footer"
+      id="app-footer"
       bg="#0C090B"
       py={{ base: 'xl', sm: 60 }}
       style={{ color: 'white', borderTop: '1px solid #1E141B' }}

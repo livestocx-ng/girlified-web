@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Box } from '@mantine/core';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
@@ -33,13 +34,73 @@ const girlWalk = {
 
 export function WhatsAppFloatingButton() {
   const pathname = usePathname();
+  const [liftAmount, setLiftAmount] = useState(0);
+
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const updateOffset = () => {
+      const footer = document.getElementById('app-footer') || document.querySelector('footer');
+      if (!footer) {
+        setLiftAmount(0);
+        return;
+      }
+
+      const rect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const overlap = windowHeight - rect.top;
+
+      if (overlap > 0) {
+        setLiftAmount(overlap);
+      } else {
+        setLiftAmount(0);
+      }
+    };
+
+    const handleScrollOrResize = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateOffset);
+    };
+
+    const footerElement = document.getElementById('app-footer') || document.querySelector('footer');
+
+    window.addEventListener('scroll', handleScrollOrResize, { passive: true });
+    window.addEventListener('resize', handleScrollOrResize, { passive: true });
+
+    updateOffset();
+
+    let observer: IntersectionObserver | null = null;
+    if (footerElement && typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(() => {
+        updateOffset();
+      });
+      observer.observe(footerElement);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('resize', handleScrollOrResize);
+      cancelAnimationFrame(animationFrameId);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [pathname]);
 
   if (pathname === '/bnpl' || pathname?.startsWith('/bnpl/')) {
     return null;
   }
 
   return (
-    <Box
+    <motion.div
+      animate={{
+        y: -liftAmount,
+        scale: liftAmount > 0 ? 1.04 : 1,
+      }}
+      transition={{
+        y: { type: 'spring', stiffness: 350, damping: 28 },
+        scale: { duration: 0.25, ease: 'easeOut' },
+      }}
       style={{
         position: 'fixed',
         bottom: 'max(24px, env(safe-area-inset-bottom, 0px))',
@@ -126,6 +187,6 @@ export function WhatsAppFloatingButton() {
           </motion.span>
         </motion.a>
       </Box>
-    </Box>
+    </motion.div>
   );
 }
