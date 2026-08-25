@@ -53,6 +53,7 @@ const categoryColors: Record<string, { bg: string; color: string }> = {
   Impact: { bg: 'rgba(5, 150, 105, 0.1)', color: '#059669' },
   Innovation: { bg: 'rgba(67, 56, 202, 0.1)', color: '#4338CA' },
   Partnership: { bg: 'rgba(163, 31, 52, 0.1)', color: '#A31F34' },
+  Awards: { bg: 'rgba(217, 119, 6, 0.12)', color: '#D97706' },
 };
 
 const BlogCard = ({
@@ -61,15 +62,19 @@ const BlogCard = ({
   excerpt,
   category,
   readTime,
+  externalUrl,
   featured = false,
 }: (typeof blogPosts)[0] & { featured?: boolean }) => {
   const cover = postCovers[slug];
   const catStyle = categoryColors[category] ?? categoryColors.Community;
+  const href = externalUrl ?? `/blog/${slug}`;
+  const isExternal = Boolean(externalUrl);
 
   return (
     <Box
-      component={Link}
-      href={`/blog/${slug}`}
+      component={isExternal ? 'a' : Link}
+      href={href}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       style={{
         display: 'block',
         textDecoration: 'none',
@@ -157,7 +162,7 @@ const BlogCard = ({
             </Group>
             <Group gap={4} c={PINK}>
               <Text size="sm" fw={700}>
-                Read article
+                {isExternal ? 'Read coverage' : 'Read article'}
               </Text>
               <IconArrowRight size={16} />
             </Group>

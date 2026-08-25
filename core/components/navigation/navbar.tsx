@@ -231,32 +231,42 @@ export function Navbar() {
                   >
                     Latest Articles
                   </Menu.Label>
-                  {blogPosts.slice(0, 3).map((post) => (
-                    <Menu.Item key={post.slug} component={Link} href={`/blog/${post.slug}`}>
-                      <Stack gap={2}>
-                        <Group justify="space-between" gap="xs" wrap="nowrap">
-                          <Text size="sm" fw={600} c="#0C090B" lineClamp={1}>
-                            {post.title}
+                  {blogPosts.slice(0, 3).map((post) => {
+                    const href = post.externalUrl ?? `/blog/${post.slug}`;
+                    const isExternal = Boolean(post.externalUrl);
+
+                    return (
+                      <Menu.Item
+                        key={post.slug}
+                        component={isExternal ? 'a' : Link}
+                        href={href}
+                        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      >
+                        <Stack gap={2}>
+                          <Group justify="space-between" gap="xs" wrap="nowrap">
+                            <Text size="sm" fw={600} c="#0C090B" lineClamp={1}>
+                              {post.title}
+                            </Text>
+                            <Text size="10px" c="dimmed" style={{ flexShrink: 0 }}>
+                              {post.readTime}
+                            </Text>
+                          </Group>
+                          <Text size="xs" c="dimmed" lineClamp={2} style={{ lineHeight: 1.45 }}>
+                            {post.excerpt}
                           </Text>
-                          <Text size="10px" c="dimmed" style={{ flexShrink: 0 }}>
-                            {post.readTime}
+                          <Text
+                            size="10px"
+                            fw={700}
+                            c="#FF007F"
+                            tt="uppercase"
+                            style={{ letterSpacing: '0.6px' }}
+                          >
+                            {post.category}
                           </Text>
-                        </Group>
-                        <Text size="xs" c="dimmed" lineClamp={2} style={{ lineHeight: 1.45 }}>
-                          {post.excerpt}
-                        </Text>
-                        <Text
-                          size="10px"
-                          fw={700}
-                          c="#FF007F"
-                          tt="uppercase"
-                          style={{ letterSpacing: '0.6px' }}
-                        >
-                          {post.category}
-                        </Text>
-                      </Stack>
-                    </Menu.Item>
-                  ))}
+                        </Stack>
+                      </Menu.Item>
+                    );
+                  })}
                   <Menu.Divider />
                   <Menu.Item component={Link} href="/blog" fw={600} c="#FF007F">
                     View all articles
@@ -398,30 +408,36 @@ export function Navbar() {
               </UnstyledButton>
               <Collapse in={blogOpened}>
                 <Stack gap="xs" pl="md" pt="xs">
-                  {blogPosts.map((post) => (
-                    <Link
-                      key={post.slug}
-                      href={`/blog/${post.slug}`}
-                      onClick={toggle}
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Box
-                        p="sm"
-                        style={{
-                          borderRadius: rem(10),
-                          border: '1px solid rgba(255, 0, 127, 0.15)',
-                          backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                        }}
+                  {blogPosts.map((post) => {
+                    const href = post.externalUrl ?? `/blog/${post.slug}`;
+                    const isExternal = Boolean(post.externalUrl);
+
+                    return (
+                      <Link
+                        key={post.slug}
+                        href={href}
+                        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        onClick={toggle}
+                        style={{ textDecoration: 'none' }}
                       >
-                        <Text size="sm" fw={600} c="#FCF9FA" mb={4}>
-                          {post.title}
-                        </Text>
-                        <Text size="xs" c="gray.5" lineClamp={2} style={{ lineHeight: 1.45 }}>
-                          {post.excerpt}
-                        </Text>
-                      </Box>
-                    </Link>
-                  ))}
+                        <Box
+                          p="sm"
+                          style={{
+                            borderRadius: rem(10),
+                            border: '1px solid rgba(255, 0, 127, 0.15)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                          }}
+                        >
+                          <Text size="sm" fw={600} c="#FCF9FA" mb={4}>
+                            {post.title}
+                          </Text>
+                          <Text size="xs" c="gray.5" lineClamp={2} style={{ lineHeight: 1.45 }}>
+                            {post.excerpt}
+                          </Text>
+                        </Box>
+                      </Link>
+                    );
+                  })}
                   <Link
                     href="/blog"
                     onClick={toggle}

@@ -50,6 +50,26 @@ export const researchPapers = [
 
 export const blogPosts = [
   {
+    slug: 'global-citizen-waislitz-peoples-choice-2026',
+    title: 'Girlified Wins Global Citizen Waislitz People’s Choice Award 2026',
+    excerpt:
+      'Co-founder Oghenekevwe William Emadago is recognized among three global innovators for turning agricultural waste into affordable sanitary pads.',
+    category: 'Awards',
+    readTime: '4 min read',
+    externalUrl:
+      'https://www.globalcitizen.org/en/content/meet-the-winners-of-the-2026-global-citizen-waisli/',
+  },
+  {
+    slug: 'businessday-waislitz-awards-2026',
+    title: 'BusinessDay: Girlified Named Among 2026 Waislitz Award Recipients',
+    excerpt:
+      'Coverage of the Global Citizen and Waislitz Foundation announcement naming Girlified’s COO among the 2026 award winners.',
+    category: 'Awards',
+    readTime: '3 min read',
+    externalUrl:
+      'https://businessday.ng/brands-advertising/article/global-citizen-waislitz-foundation-announce-smart-israel-diana-yousef-oghenekevwe-emadago-as-recipients-of-2026-global-citizen-waislitz-awards/',
+  },
+  {
     slug: 'm-ventures-accelerator',
     title: 'Girlified Selected for the M Ventures Accelerator',
     excerpt:

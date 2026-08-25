@@ -1,8 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Box, Button, Container, Image, Stack, Text, Title, Badge } from '@mantine/core';
+import { Box, Button, Container, Group, Image, Stack, Text, Title } from '@mantine/core';
 import { IconExternalLink, IconVideo, IconPlayerPlay } from '@tabler/icons-react';
+
+const PINK = '#FF007F';
+const PINK_LIGHT = 'rgba(255, 0, 127, 0.08)';
+const PINK_BORDER = 'rgba(255, 0, 127, 0.18)';
+const INK = '#0C090B';
+
+/** Add future press, awards, or media links here. */
+const featuredLinks = [
+  {
+    id: 'global-citizen-waislitz-2026',
+    source: 'Global Citizen',
+    label: "Waislitz People's Choice Award 2026",
+    href: 'https://www.globalcitizen.org/en/content/meet-the-winners-of-the-2026-global-citizen-waisli/',
+  },
+];
 
 const FeaturedSection = () => {
   return (
@@ -74,8 +89,68 @@ const FeaturedSection = () => {
                 backgroundClip: 'text',
               }}
             >
-              We got featured!
+              Global Recognition
             </Title>
+
+            {featuredLinks.length > 0 && (
+              <Group gap="sm" justify="center" wrap="wrap" maw={720}>
+                {featuredLinks.map((link) => (
+                  <Box
+                    key={link.id}
+                    component="a"
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    px="md"
+                    py={10}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 10,
+                      borderRadius: 999,
+                      textDecoration: 'none',
+                      backgroundColor: 'rgba(255, 255, 255, 0.72)',
+                      border: `1px solid ${PINK_BORDER}`,
+                      boxShadow: '0 8px 24px rgba(255, 0, 127, 0.06)',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                    }}
+                    className="featured-link-tag"
+                  >
+                    <Text
+                      component="span"
+                      size="xs"
+                      fw={700}
+                      tt="uppercase"
+                      style={{
+                        letterSpacing: '0.6px',
+                        color: PINK,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {link.source}
+                    </Text>
+                    <Box
+                      style={{
+                        width: 1,
+                        height: 14,
+                        backgroundColor: PINK_BORDER,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Text
+                      component="span"
+                      size="sm"
+                      fw={600}
+                      style={{ color: INK, lineHeight: 1.3 }}
+                    >
+                      {link.label}
+                    </Text>
+                    <IconExternalLink size={15} color={PINK} style={{ flexShrink: 0 }} />
+                  </Box>
+                ))}
+              </Group>
+            )}
+
             <Text
               size="md"
               style={{
@@ -229,6 +304,15 @@ const FeaturedSection = () => {
           </Button>
         </Stack>
       </Container>
+
+      <style jsx global>{`
+        .featured-link-tag:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 0, 127, 0.35);
+          box-shadow: 0 12px 28px rgba(255, 0, 127, 0.12);
+          background-color: ${PINK_LIGHT};
+        }
+      `}</style>
     </Box>
   );
 };
