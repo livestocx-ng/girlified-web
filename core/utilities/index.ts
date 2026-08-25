@@ -312,6 +312,16 @@ export const Partners: Partner[] = [
     image: '/images/sponsors/sanitation_and_health_fund.svg',
     detail: 'Sanitation and Health Fund',
   },
+  {
+    name: 'Global Citizen',
+    image: '/images/sponsors/global-citizen.jpg',
+    detail: 'Presenting partner of the Global Citizen Waislitz Awards',
+  },
+  {
+    name: 'Waislitz Foundation',
+    image: '/images/sponsors/waislitz foundation.png',
+    detail: 'Investing in innovators working to end extreme poverty',
+  },
 ];
 
 export const Sponsors = Partners;
