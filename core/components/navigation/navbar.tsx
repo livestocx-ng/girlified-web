@@ -238,9 +238,11 @@ export function Navbar() {
                     return (
                       <Menu.Item
                         key={post.slug}
-                        component={isExternal ? 'a' : Link}
+                        component={Link}
                         href={href}
-                        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        {...(isExternal
+                          ? { target: '_blank' as const, rel: 'noopener noreferrer' }
+                          : {})}
                       >
                         <Stack gap={2}>
                           <Group justify="space-between" gap="xs" wrap="nowrap">

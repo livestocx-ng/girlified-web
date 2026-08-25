@@ -72,9 +72,11 @@ const BlogCard = ({
 
   return (
     <Box
-      component={isExternal ? 'a' : Link}
+      component={Link}
       href={href}
-      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...(isExternal
+        ? { target: '_blank' as const, rel: 'noopener noreferrer' }
+        : {})}
       style={{
         display: 'block',
         textDecoration: 'none',
