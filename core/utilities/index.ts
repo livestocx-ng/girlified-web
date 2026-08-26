@@ -60,6 +60,16 @@ export const blogPosts = [
       'https://www.globalcitizen.org/en/content/meet-the-winners-of-the-2026-global-citizen-waisli/',
   },
   {
+    slug: 'waislitz-foundation-award-recipients-2026',
+    title: 'Waislitz Foundation: Meet the 2026 Global Citizen Waislitz Award Recipients',
+    excerpt:
+      'The Waislitz Foundation announces Girlified’s co-founder among three winners receiving USD $100,000 to scale impact.',
+    category: 'Awards',
+    readTime: '4 min read',
+    externalUrl:
+      'https://waislitzfoundation.org/content/news/2026-08-global-citizen-and-the-waislitz-foundation-announce-recipients-of-the-2026-global-citizen-waislitz-awards/',
+  },
+  {
     slug: 'businessday-waislitz-awards-2026',
     title: 'BusinessDay: Girlified Named Among 2026 Waislitz Award Recipients',
     excerpt:

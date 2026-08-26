@@ -26,6 +26,18 @@ const INK = '#0C090B';
 const MUTED = 'rgba(12, 9, 11, 0.68)';
 
 const postCovers: Record<string, { src: string; alt: string }> = {
+  'global-citizen-waislitz-peoples-choice-2026': {
+    src: '/images/blog/waislitz-2026/global-citizen-winners.png',
+    alt: '2026 Global Citizen Waislitz Awards winners including Oghenekevwe William Emadago of Girlified',
+  },
+  'waislitz-foundation-award-recipients-2026': {
+    src: '/images/blog/waislitz-2026/bd-fc6197bc.jpeg',
+    alt: 'Oghenekevwe William Emadago, Choice Award winner of the Global Citizen Waislitz Awards',
+  },
+  'businessday-waislitz-awards-2026': {
+    src: '/images/blog/waislitz-2026/bd-fc6197bc.jpeg',
+    alt: 'Oghenekevwe William Emadago of Girlified named among 2026 Global Citizen Waislitz Award recipients',
+  },
   'girlified-women-and-girls-engagement': {
     src: '/images/blog/IMG_7107-1-1536x916.jpg',
     alt: 'Women and girls engagement focus group discussion in Rankyeng Village',
