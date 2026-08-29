@@ -1,25 +1,220 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Box, Button, Container, Group, Image, Stack, Text, Title } from '@mantine/core';
-import { IconExternalLink, IconVideo, IconPlayerPlay } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
+import {
+  IconArticle,
+  IconExternalLink,
+  IconPlayerPlay,
+  IconVideo,
+} from '@tabler/icons-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Box, Button, Container, Image, Stack, Text, Title } from '@mantine/core';
 
 const PINK = '#FF007F';
-const PINK_LIGHT = 'rgba(255, 0, 127, 0.08)';
-const PINK_BORDER = 'rgba(255, 0, 127, 0.18)';
 const INK = '#0C090B';
+const AUTOPLAY_INTERVAL_MS = 6000;
 
-/** Add future press, awards, or media links here. */
-const featuredLinks = [
+const smoothEase = [0.45, 0, 0.2, 1] as const;
+
+const slideTransition = {
+  duration: 1,
+  ease: smoothEase,
+};
+
+const slideVariants = {
+  enter: {
+    x: '100%',
+  },
+  center: {
+    x: 0,
+  },
+  exit: {
+    x: '-100%',
+  },
+};
+
+const ctaTransition = {
+  duration: 0.5,
+  ease: smoothEase,
+};
+
+const ctaVariants = {
+  enter: { opacity: 0, y: 10 },
+  center: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 },
+};
+
+type FeaturedMediaItem = {
+  id: string;
+  type: 'article' | 'video';
+  description: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+  ctaLabel: string;
+};
+
+const featuredMediaItems: FeaturedMediaItem[] = [
   {
-    id: 'global-citizen-waislitz-2026',
-    source: 'Global Citizen',
-    label: "Waislitz People's Choice Award 2026",
+    id: 'global-citizen-waislitz',
+    type: 'article',
+    description:
+      'Girlified wins the Global Citizen Waislitz People’s Choice Award 2026, recognizing our work turning agricultural waste into affordable sanitary pads.',
     href: 'https://www.globalcitizen.org/en/content/meet-the-winners-of-the-2026-global-citizen-waisli/',
+    image: '/images/blog/waislitz-2026/global-citizen-winners.png',
+    imageAlt:
+      '2026 Global Citizen Waislitz Awards winners including Oghenekevwe William Emadago of Girlified',
+    ctaLabel: 'Read on Global Citizen',
+  },
+  {
+    id: 'dw-featured',
+    type: 'video',
+    description:
+      'Our work, featured by Deutsche Welle (DW), where our co-founder, William Oghenekevwe Emadago, discussed our core mission at the heart of Girlified.',
+    href: 'https://www.dw.com/en/period-poverty-how-northern-nigeria-is-tackling-stigma/video-73931799',
+    image: '/images/featured/image_featured_1.png',
+    imageAlt: 'DW feature on period poverty in Northern Nigeria',
+    ctaLabel: 'Watch directly on DW News',
   },
 ];
 
+const FeaturedMediaCard = ({ item }: { item: FeaturedMediaItem }) => {
+  const isVideo = item.type === 'video';
+
+  return (
+    <Stack gap="lg" align="center" w="100%">
+      <Text
+        ta="center"
+        size="md"
+        maw={680}
+        mx="auto"
+        style={{
+          lineHeight: 1.6,
+          letterSpacing: '-0.3px',
+          color: 'rgba(12, 9, 11, 0.7)',
+        }}
+      >
+        {item.description}
+      </Text>
+
+      <Box
+        component="a"
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="featured-media-card"
+        style={{
+          display: 'block',
+          position: 'relative',
+          width: '100%',
+          paddingTop: '56.25%',
+          borderRadius: 24,
+          overflow: 'hidden',
+          backgroundColor: '#000000',
+          border: '1px solid rgba(255, 0, 127, 0.25)',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.08), 0 0 40px rgba(255, 0, 127, 0.04)',
+          cursor: 'pointer',
+          textDecoration: 'none',
+        }}
+      >
+        <Image
+          src={item.image}
+          alt={item.imageAlt}
+          className="featured-media-image"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        />
+
+        <Box
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: 'rgba(12, 9, 11, 0.15)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {isVideo ? (
+          <Box
+            className="featured-play-btn"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.95)',
+              border: '4px solid #FF007F',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 10px 25px rgba(255, 0, 127, 0.3)',
+              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+              zIndex: 2,
+            }}
+          >
+            <Box
+              style={{
+                position: 'absolute',
+                inset: -8,
+                borderRadius: '50%',
+                border: '2px solid rgba(255, 0, 127, 0.3)',
+                animation: 'featured-pulse-ring 2s infinite',
+              }}
+            />
+            <IconPlayerPlay size={36} color="#FF007F" style={{ marginLeft: 4, fill: '#FF007F' }} />
+          </Box>
+        ) : (
+          <Box
+            className="featured-read-badge"
+            style={{
+              position: 'absolute',
+              bottom: 20,
+              right: 20,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '10px 16px',
+              borderRadius: 999,
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              border: '1px solid rgba(255, 0, 127, 0.2)',
+              boxShadow: '0 8px 24px rgba(12, 9, 11, 0.12)',
+              zIndex: 2,
+              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+          >
+            <IconArticle size={18} color={PINK} />
+            <Text size="sm" fw={700} c={INK}>
+              Read article
+            </Text>
+          </Box>
+        )}
+      </Box>
+    </Stack>
+  );
+};
+
 const FeaturedSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = featuredMediaItems[activeIndex];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % featuredMediaItems.length);
+    }, AUTOPLAY_INTERVAL_MS);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Box
       component="section"
@@ -32,7 +227,6 @@ const FeaturedSection = () => {
         borderTop: '1px solid rgba(0, 0, 0, 0.05)',
       }}
     >
-      {/* Background Grid Pattern */}
       <Box
         style={{
           position: 'absolute',
@@ -45,7 +239,6 @@ const FeaturedSection = () => {
         }}
       />
 
-      {/* Decorative Radial Glowing Orbs */}
       <Box
         style={{
           position: 'absolute',
@@ -61,21 +254,7 @@ const FeaturedSection = () => {
 
       <Container size="lg" style={{ position: 'relative', zIndex: 2 }}>
         <Stack gap="xl" align="center" ta="center">
-          {/* Header */}
           <Stack align="center" gap="md">
-            {/* <Badge
-              size="lg"
-              radius="xl"
-              style={{
-                background: 'rgba(255, 0, 127, 0.08)',
-                color: '#FF007F',
-                border: '1px solid rgba(255, 0, 127, 0.15)',
-                fontWeight: 700,
-                letterSpacing: '1px',
-              }}
-            >
-              MEDIA FEATURE
-            </Badge> */}
             <Title
               order={2}
               style={{
@@ -91,80 +270,8 @@ const FeaturedSection = () => {
             >
               Global Recognition
             </Title>
-
-            {featuredLinks.length > 0 && (
-              <Group gap="sm" justify="center" wrap="wrap" maw={720}>
-                {featuredLinks.map((link) => (
-                  <Box
-                    key={link.id}
-                    component="a"
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    px="md"
-                    py={10}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 10,
-                      borderRadius: 999,
-                      textDecoration: 'none',
-                      backgroundColor: 'rgba(255, 255, 255, 0.72)',
-                      border: `1px solid ${PINK_BORDER}`,
-                      boxShadow: '0 8px 24px rgba(255, 0, 127, 0.06)',
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-                    }}
-                    className="featured-link-tag"
-                  >
-                    <Text
-                      component="span"
-                      size="xs"
-                      fw={700}
-                      tt="uppercase"
-                      style={{
-                        letterSpacing: '0.6px',
-                        color: PINK,
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {link.source}
-                    </Text>
-                    <Box
-                      style={{
-                        width: 1,
-                        height: 14,
-                        backgroundColor: PINK_BORDER,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <Text
-                      component="span"
-                      size="sm"
-                      fw={600}
-                      style={{ color: INK, lineHeight: 1.3 }}
-                    >
-                      {link.label}
-                    </Text>
-                    <IconExternalLink size={15} color={PINK} style={{ flexShrink: 0 }} />
-                  </Box>
-                ))}
-              </Group>
-            )}
-
-            <Text
-              size="md"
-              style={{
-                lineHeight: 1.6,
-                maxWidth: 680,
-                letterSpacing: '-0.3px',
-                color: 'rgba(12, 9, 11, 0.7)',
-              }}
-            >
-              Our work, featured by Deutsche Welle (DW), where our co-founder, William Oghenekevwe Emadago, discussed our core mission at the heart of Girlified.
-            </Text>
           </Stack>
 
-          {/* Video Player Container */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -172,145 +279,96 @@ const FeaturedSection = () => {
             transition={{ duration: 0.8 }}
             style={{ width: '100%' }}
           >
-            <Box
-              component="a"
-              href="https://www.dw.com/en/period-poverty-how-northern-nigeria-is-tackling-stigma/video-73931799"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                position: 'relative',
-                width: '100%',
-                paddingTop: '56.25%', // 16:9 Aspect Ratio
-                borderRadius: 24,
-                overflow: 'hidden',
-                backgroundColor: '#000000',
-                border: '1px solid rgba(255, 0, 127, 0.25)',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.08), 0 0 40px rgba(255, 0, 127, 0.04)',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => {
-                const img = e.currentTarget.querySelector('img');
-                if (img) {
-                  (img as HTMLElement).style.transform = 'scale(1.03)';
-                }
-                const playBtn = e.currentTarget.querySelector('.play-btn-wrapper');
-                if (playBtn) {
-                  (playBtn as HTMLElement).style.transform = 'translate(-50%, -50%) scale(1.1)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                const img = e.currentTarget.querySelector('img');
-                if (img) {
-                  (img as HTMLElement).style.transform = 'scale(1)';
-                }
-                const playBtn = e.currentTarget.querySelector('.play-btn-wrapper');
-                if (playBtn) {
-                  (playBtn as HTMLElement).style.transform = 'translate(-50%, -50%) scale(1)';
-                }
-              }}
-            >
-              {/* Background Thumbnail Image */}
-              <Image
-                src="/images/featured/image_featured_1.png"
-                alt="DW Featured Video Thumbnail"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              />
-
-              {/* Dark Overlay */}
-              <Box
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundColor: 'rgba(12, 9, 11, 0.15)',
-                  pointerEvents: 'none',
-                }}
-              />
-
-              {/* Modern Pulse Play Button */}
-              <Box
-                className="play-btn-wrapper"
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: 80,
-                  height: 80,
-                  borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  border: '4px solid #FF007F',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 10px 25px rgba(255, 0, 127, 0.3)',
-                  transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                  zIndex: 2,
-                }}
-              >
-                {/* Visual pulse rings */}
-                <Box
-                  style={{
-                    position: 'absolute',
-                    inset: -8,
-                    borderRadius: '50%',
-                    border: '2px solid rgba(255, 0, 127, 0.3)',
-                    animation: 'pulse-ring 2s infinite',
-                  }}
-                />
-                
-                <IconPlayerPlay size={36} color="#FF007F" style={{ marginLeft: 4, fill: '#FF007F' }} />
+            <Box pos="relative" w="100%" style={{ overflow: 'hidden' }}>
+              <Box aria-hidden style={{ visibility: 'hidden', pointerEvents: 'none' }}>
+                <FeaturedMediaCard item={activeItem} />
               </Box>
 
-              {/* CSS Injection for Pulse Animation */}
-              <style dangerouslySetInnerHTML={{__html: `
-                @keyframes pulse-ring {
-                  0% { transform: scale(0.95); opacity: 0.8; }
-                  50% { transform: scale(1.1); opacity: 0.4; }
-                  100% { transform: scale(1.2); opacity: 0; }
-                }
-              `}} />
+              <AnimatePresence initial={false} mode="sync">
+                <motion.div
+                  key={activeItem.id}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    willChange: 'transform',
+                  }}
+                >
+                  <FeaturedMediaCard item={activeItem} />
+                </motion.div>
+              </AnimatePresence>
             </Box>
           </motion.div>
 
-          {/* Action Button */}
-          <Button
-            component="a"
-            href="https://www.dw.com/en/period-poverty-how-northern-nigeria-is-tackling-stigma/video-73931799"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="subtle"
-            color="pink"
-            rightSection={<IconExternalLink size={16} />}
-            leftSection={<IconVideo size={16} />}
-            styles={{
-              root: {
-                fontWeight: 600,
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 0, 127, 0.05)',
-                },
-              },
-            }}
-          >
-            Watch directly on DW News
-          </Button>
+          <Box style={{ overflow: 'hidden', width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={activeItem.id}
+                variants={ctaVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={ctaTransition}
+              >
+                <Button
+                  component="a"
+                  href={activeItem.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="subtle"
+                  color="pink"
+                  rightSection={<IconExternalLink size={16} />}
+                  leftSection={
+                    activeItem.type === 'video' ? <IconVideo size={16} /> : <IconArticle size={16} />
+                  }
+                  styles={{
+                    root: {
+                      fontWeight: 600,
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 0, 127, 0.05)',
+                      },
+                    },
+                  }}
+                >
+                  {activeItem.ctaLabel}
+                </Button>
+              </motion.div>
+            </AnimatePresence>
+          </Box>
         </Stack>
       </Container>
 
       <style jsx global>{`
-        .featured-link-tag:hover {
+        @keyframes featured-pulse-ring {
+          0% {
+            transform: scale(0.95);
+            opacity: 0.8;
+          }
+          50% {
+            transform: scale(1.1);
+            opacity: 0.4;
+          }
+          100% {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+        }
+
+        .featured-media-card:hover .featured-media-image {
+          transform: scale(1.03);
+        }
+
+        .featured-media-card:hover .featured-play-btn {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .featured-media-card:hover .featured-read-badge {
           transform: translateY(-2px);
-          border-color: rgba(255, 0, 127, 0.35);
-          box-shadow: 0 12px 28px rgba(255, 0, 127, 0.12);
-          background-color: ${PINK_LIGHT};
         }
       `}</style>
     </Box>
