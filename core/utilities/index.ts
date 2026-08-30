@@ -312,11 +312,11 @@ export const Partners: Partner[] = [
     image: '/images/sponsors/capitalM.svg',
     detail: 'The Market-Led Moonshot for Menstrual Health',
   },
-  {
-    name: 'Hystra',
-    image: '/images/sponsors/hystra_logo.jpeg',
-    detail: 'Hybrid Strategies Consulting',
-  },
+  // {
+  //   name: 'Hystra',
+  //   image: '/images/sponsors/hystra_logo.jpeg',
+  //   detail: 'Hybrid Strategies Consulting',
+  // },
   {
     name: 'SHFund',
     image: '/images/sponsors/sanitation_and_health_fund.svg',
