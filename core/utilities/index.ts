@@ -267,26 +267,26 @@ export const Partners: Partner[] = [
     image: "/images/sponsors/o'shaugnessy.jpeg",
     detail: 'Fellowship backing climate tech innovations',
   },
-  {
-    name: '776 Foundation',
-    image: '/images/sponsors/776_foundation.png',
-    detail: 'Supporting climate tech and green solutions',
-  },
+  // {
+  //   name: '776 Foundation',
+  //   image: '/images/sponsors/776_foundation.png',
+  //   detail: 'Supporting climate tech and green solutions',
+  // },
   {
     name: 'Challenge Works',
     image: '/images/sponsors/challenge works.png',
     detail: 'Social enterprise designing and delivering innovation prizes',
   },
-  {
-    name: 'Ewabali',
-    image: '/images/sponsors/ewabali.png',
-    detail: 'Partner in development and social impact',
-  },
-  {
-    name: 'GIZ',
-    image: '/images/sponsors/giz.png',
-    detail: 'German Agency for International Cooperation',
-  },
+  // {
+  //   name: 'Ewabali',
+  //   image: '/images/sponsors/ewabali.png',
+  //   detail: 'Partner in development and social impact',
+  // },
+  // {
+  //   name: 'GIZ',
+  //   image: '/images/sponsors/giz.png',
+  //   detail: 'German Agency for International Cooperation',
+  // },
   {
     name: 'Government of Canada',
     image: '/images/sponsors/government of canada.png',
