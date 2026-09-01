@@ -1,23 +1,26 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Girlified - Plant-Based Eco-Friendly Sanitary Pads',
+  title: "Girlified - Women's Health and Sustainability",
   description:
-    'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+    "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
   keywords: [
     'Girlified',
-    'Sanitary Pads',
-    'Banana Stem Fiber',
+    "Women's Health",
+    'Sustainability',
+    'Menstrual Health',
+    'Period Care',
     'Plant-based Period Care',
     'Eco-friendly Pads',
     'Biodegradable Pads',
-    'Menstrual Health',
+    'Banana Stem Fiber',
+    'Sanitary Pads',
     'Period Poverty',
   ],
   openGraph: {
-    title: 'Girlified - Plant-Based Eco-Friendly Sanitary Pads',
+    title: "Girlified - Women's Health and Sustainability",
     description:
-      'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+      "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
     url: 'https://girlified.co',
     siteName: 'Girlified',
     type: 'website',
@@ -56,9 +59,9 @@ export const metadata: Metadata = {
     card: 'summary',
     site: '@girlified',
     creator: '@girlified',
-    title: 'Girlified - Plant-Based Eco-Friendly Sanitary Pads',
+    title: "Girlified - Women's Health and Sustainability",
     description:
-      'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+      "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
     images: [
       {
         url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/888ccd61-9aa4-4f4a-972e-fbc7eef12582.jpeg',
