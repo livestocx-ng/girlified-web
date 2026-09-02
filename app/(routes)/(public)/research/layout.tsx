@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
+const description =
+  "Peer-reviewed scientific research guiding sustainable, plant-based solutions for women's health.";
+
 export const metadata: Metadata = {
   title: 'Girlified - Research',
-  description:
-    "Peer-reviewed scientific research on banana stem fibre and superabsorbent composites guides the development of Girlified's effective, biodegradable pads.",
+  description,
   keywords: [
     'Girlified',
     'Banana Stem Fiber',
@@ -16,8 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Girlified - Research',
-    description:
-      "Peer-reviewed scientific research on banana stem fibre and superabsorbent composites guides the development of Girlified's effective, biodegradable pads.",
+    description,
     url: 'https://girlified.co/research',
     siteName: 'Girlified',
     type: 'website',
@@ -57,8 +58,7 @@ export const metadata: Metadata = {
     site: '@girlified',
     creator: '@girlified',
     title: 'Girlified - Research',
-    description:
-      "Peer-reviewed scientific research on banana stem fibre and superabsorbent composites guides the development of Girlified's effective, biodegradable pads.",
+    description,
     images: [
       {
         url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/888ccd61-9aa4-4f4a-972e-fbc7eef12582.jpeg',

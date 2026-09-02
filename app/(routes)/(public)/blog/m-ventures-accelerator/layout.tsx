@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
+const description =
+  'Girlified has been selected for the $30,000 M Ventures Accelerator to pilot next-generation biodegradable menstrual pads through plant-fiber R&D, improving absorbency and scaling sustainable period care in Africa.';
+
 export const metadata: Metadata = {
   title: 'Girlified - Girlified Selected for the M Ventures Accelerator',
-  description:
-    'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+  description,
   keywords: [
     'Girlified',
     'M Ventures',
@@ -20,8 +22,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Girlified Selected for the M Ventures Accelerator',
-    description:
-      'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+    description,
     url: 'https://girlified.co/blog/m-ventures-accelerator',
     siteName: 'Girlified',
     type: 'article',
@@ -62,8 +63,7 @@ export const metadata: Metadata = {
     site: '@girlified',
     creator: '@girlified',
     title: 'Girlified Selected for the M Ventures Accelerator',
-    description:
-      'Selected for the $30,000 M Ventures Accelerator to advance next-generation sustainable menstrual technology.',
+    description,
     images: [
       {
         url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/edcbcc49-772d-4420-98ff-05cbcfb2c0d4.jpeg',

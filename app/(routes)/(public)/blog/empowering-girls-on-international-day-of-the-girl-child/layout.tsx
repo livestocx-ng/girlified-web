@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 const title = 'Empowering Girls on International Day of the Girl Child';
 const description =
-  'A new automated production line puts period dignity within reach for millions and cuts plastic waste at scale. Girlified now produces 30,000 sanitary napkins daily—scaling impact 50×.';
+  "On International Day of the Girl Child, Girlified empowered 523 girls through menstrual hygiene education, environmental sustainability sessions, and distribution of eco-friendly sanitary pads.";
 const url = 'https://girlified.co/blog/empowering-girls-on-international-day-of-the-girl-child';
 
 const ogImages = [

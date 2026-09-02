@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 const title = '10 Million Sanitary Napkins Every Year — Now Achievable';
 const description =
-  'A new automated production line puts period dignity within reach for millions and cuts plastic waste at scale. Girlified now produces 30,000 sanitary napkins daily—scaling impact 50×.';
+  "Girlified's new high-output automated line produces biodegradable sanitary napkins daily—scaling impact 50× toward 10 million pads per year and eliminating over 1,000 tons of plastic waste.";
 const url = 'https://girlified.co/blog/10-million-sanitary-napkins';
 
 const ogImages = [

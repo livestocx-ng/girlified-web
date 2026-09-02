@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 const title = 'Girlified Women and Girls Engagement';
 const description =
-  'Field insights from 82 women and girls in Rankyeng Village, Jos South LGA.';
+  "Focus group insights from 82 women and girls in Rankyeng Village on pad comfort, affordability, disposal habits, and plastic pollution—highlighting period poverty and shaping Girlified's community-led development.";
 const url = 'https://girlified.co/blog/girlified-women-and-girls-engagement';
 
 const ogImages = [

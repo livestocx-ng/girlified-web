@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Girlified - Our Story',
   description:
-    'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+    "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
   keywords: [
     'Girlified',
     'Sanitary Pads',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Girlified - Our Story',
     description:
-      'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+      "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
     url: 'https://girlified.co',
     siteName: 'Girlified',
     type: 'website',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     creator: '@girlified',
     title: 'Girlified - Our Story',
     description:
-      'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+      "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
     images: [
       {
         url: 'https://afritint-media.s3.eu-north-1.amazonaws.com/versions/original/888ccd61-9aa4-4f4a-972e-fbc7eef12582.jpeg',

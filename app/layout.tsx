@@ -27,9 +27,9 @@ const figtree = Figtree({
 });
 
 export const metadata = {
-  title: 'Girlified – Plant-Based Eco-Friendly Sanitary Pads',
+  title: "Girlified – Women's Health and Sustainability",
   description:
-    'Revolutionizing period health with sanitary pads made from upcycled banana stem fiber. Comfortable, highly absorbent, chemical-free, and completely plastic-free.',
+    "Girlified is dedicated to women's health and sustainability, developing plant-based solutions.",
 };
 
 export default function RootLayout({ children }: { children: any }) {
