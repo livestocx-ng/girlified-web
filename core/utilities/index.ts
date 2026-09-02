@@ -196,7 +196,7 @@ export const teamMembers = [
     credentials: ['BBC News Africa', 'BusinessDay Nigeria', 'State Chair G100 Nigeria'],
     linkedin: 'https://linkedin.com/in/prayer-nwagboso-54461a174',
     image:
-      'https://girlified.com.ng/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-09-at-10.00.54-AM.jpg',
+      '/images/team/team_member_2.jpg',
   },
   {
     name: 'Oghenekevwe William',
@@ -213,7 +213,7 @@ export const teamMembers = [
     ],
     credentials: ['University of Jos', 'Chatham House Member', 'Environmental Educator (NAAEE)'],
     linkedin: 'https://linkedin.com/in/oghenekevwe-emadago',
-    image: 'https://girlified.com.ng/wp-content/uploads/2023/07/Untitled-design.png',
+    image: '/images/team/team_member_1.png',
   },
 ];
 
