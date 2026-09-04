@@ -446,7 +446,7 @@ const AboutUs = () => {
                   }}
                 >
                   <Image
-                    src="/images/product/image_research.jpg"
+                    src="/images/research/image_microscope.jpg"
                     alt="Girlified product development and manufacturing journey"
                     style={{ display: 'block', width: '100%', objectFit: 'cover' }}
                   />

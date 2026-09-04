@@ -15,7 +15,7 @@ const TechnologySection = () => {
         'Upcycled banana stem agricultural waste fiber is naturally three times more absorbent than wood pulp or traditional cotton fillers, locking in moisture to keep you secure and dry.',
       benefit: '3x More Absorbent than paper cores',
       icon: IconLeaf,
-      image: '/images/product/image_research.jpg',
+      image: '/images/product/image_banana_stem.jpg',
     },
     {
       title: '100% Biodegradable',
