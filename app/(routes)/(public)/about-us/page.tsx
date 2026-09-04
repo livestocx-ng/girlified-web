@@ -446,7 +446,7 @@ const AboutUs = () => {
                   }}
                 >
                   <Image
-                    src="https://girlified.com.ng/wp-content/uploads/2023/11/journey-1024x706.jpg"
+                    src="/images/product/image_research.jpg"
                     alt="Girlified product development and manufacturing journey"
                     style={{ display: 'block', width: '100%', objectFit: 'cover' }}
                   />
