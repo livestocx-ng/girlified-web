@@ -32,7 +32,7 @@ const SOCIAL_HOVER = '#FF007F';
 const socialLinks = [
   { href: 'https://x.com/girlified2', icon: IconBrandTwitter, label: 'X (Twitter)' },
   {
-    href: 'https://www.instagram.com/girlified_ltd/',
+    href: 'https://www.instagram.com/girlified__/',
     icon: IconBrandInstagram,
     label: 'Instagram',
   },
