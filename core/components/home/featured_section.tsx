@@ -67,6 +67,17 @@ const featuredMediaItems: FeaturedMediaItem[] = [
     ctaLabel: 'Read on Global Citizen',
   },
   {
+    id: 'bbc-africa',
+    type: 'video',
+    description:
+      "'We preferred to stay at home during our period' — BBC Africa features Girlified's work addressing period poverty and menstrual stigma across communities.",
+    href: 'https://youtube.com/shorts/e_xCWkVx9Os?si=Nh8mNt_FPZLgtea4',
+    image: '/images/featured/image_featured_bbc_africa.jpg',
+    imageAlt:
+      "BBC News Africa Short: 'We preferred to stay at home during our period'",
+    ctaLabel: 'Watch on YouTube',
+  },
+  {
     id: 'dw-featured',
     type: 'video',
     description:
