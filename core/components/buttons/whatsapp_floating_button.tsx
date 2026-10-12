@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Box } from '@mantine/core';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { Box, Text } from '@mantine/core';
 
 const WHATSAPP_ORDER_URL =
   'https://api.whatsapp.com/send?phone=+2348118178799&text=Hi+there%2C+I+would+like+to+order+some+Girlified+Sanitary+Pads';
@@ -32,9 +32,41 @@ const girlWalk = {
   },
 };
 
+function parseRgb(color: string): { r: number; g: number; b: number; a: number } | null {
+  const match = color.match(
+    /rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)/
+  );
+  if (!match) return null;
+  return {
+    r: Number(match[1]),
+    g: Number(match[2]),
+    b: Number(match[3]),
+    a: match[4] === undefined ? 1 : Number(match[4]),
+  };
+}
+
+function isDarkBackgroundBehind(sampleX: number, sampleY: number): boolean {
+  const stack = document.elementsFromPoint(sampleX, sampleY);
+  for (const el of stack) {
+    if (!(el instanceof HTMLElement)) continue;
+    // Skip the floating button itself and its children
+    if (el.closest('[data-whatsapp-float]')) continue;
+
+    const bg = getComputedStyle(el).backgroundColor;
+    const rgb = parseRgb(bg);
+    if (!rgb || rgb.a < 0.4) continue;
+
+    // Relative luminance — treat near-black / dark surfaces as dark
+    const luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
+    return luminance < 0.35;
+  }
+  return false;
+}
+
 export function WhatsAppFloatingButton() {
   const pathname = usePathname();
   const [liftAmount, setLiftAmount] = useState(0);
+  const [textOnDark, setTextOnDark] = useState(false);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -43,17 +75,19 @@ export function WhatsAppFloatingButton() {
       const footer = document.getElementById('app-footer') || document.querySelector('footer');
       if (!footer) {
         setLiftAmount(0);
-        return;
+      } else {
+        const rect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const overlap = windowHeight - rect.top;
+        setLiftAmount(overlap > 0 ? overlap : 0);
       }
 
-      const rect = footer.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const overlap = windowHeight - rect.top;
-
-      if (overlap > 0) {
-        setLiftAmount(overlap);
-      } else {
-        setLiftAmount(0);
+      const label = document.querySelector('[data-whatsapp-float-label]');
+      if (label instanceof HTMLElement) {
+        const rect = label.getBoundingClientRect();
+        const sampleX = rect.left + rect.width / 2;
+        const sampleY = rect.top + rect.height / 2;
+        setTextOnDark(isDarkBackgroundBehind(sampleX, sampleY));
       }
     };
 
@@ -93,6 +127,7 @@ export function WhatsAppFloatingButton() {
 
   return (
     <motion.div
+      data-whatsapp-float
       animate={{
         y: -liftAmount,
         scale: liftAmount > 0 ? 1.04 : 1,
@@ -112,7 +147,7 @@ export function WhatsAppFloatingButton() {
         gap: 2,
       }}
     >
-      <motion.span
+      {/* <motion.span
         aria-hidden
         animate={girlWalk}
         style={{
@@ -124,7 +159,20 @@ export function WhatsAppFloatingButton() {
         }}
       >
         👧🏻
-      </motion.span>
+      </motion.span> */}
+
+      <Text
+        data-whatsapp-float-label
+        size="xs"
+        fw={600}
+        style={{
+          color: textOnDark ? '#FFFFFF' : '#0C090B',
+          transition: 'color 0.2s ease',
+          textAlign: 'center',
+        }}
+      >
+        Send us a whatsapp message
+      </Text>
 
       <Box style={{ position: 'relative', width: BUTTON_SIZE, height: BUTTON_SIZE }}>
         {[0, 1].map((index) => (

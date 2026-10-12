@@ -161,14 +161,27 @@ export function Footer() {
                 <br />
                 Pioneering eco-friendly menstrual health tech in Sub-Saharan Africa.
               </Text>
-              <Anchor
-                href="mailto:support@girlified.co"
-                size="sm"
-                c="primary.2"
-                style={{ transition: 'color 0.2s' }}
-              >
-                support@girlified.co
-              </Anchor>
+              <Group gap="sm" wrap="wrap">
+                <Anchor
+                  href="mailto:support@girlified.co"
+                  size="sm"
+                  c="primary.2"
+                  style={{ transition: 'color 0.2s' }}
+                >
+                  support@girlified.co
+                </Anchor>
+                <Text size="sm" c="gray.5">
+                  ·
+                </Text>
+                <Anchor
+                  href="tel:+2348118178799"
+                  size="sm"
+                  c="primary.2"
+                  style={{ transition: 'color 0.2s' }}
+                >
+                  +234 811 817 8799
+                </Anchor>
+              </Group>
 
               <Stack gap="sm" mt="xs">
                 <Text
