@@ -18,7 +18,7 @@ const TechnologySection = () => {
       image: '/images/product/image_banana_stem.jpg',
     },
     {
-      title: '100% Biodegradable',
+      title: 'Eco-Friendly',
       description:
         'By completely eliminating plastic layers and petrochemical Super Absorbent Polymers (SAP), our pads fully decompose in landfills or compost bins within six months.',
       benefit: 'Decomposes completely in 6 months',
