@@ -336,7 +336,7 @@ const Hero = () => {
                           margin: '8px 0',
                         }}
                       >
-                        <CountUp end={78000} duration={3} separator="," />+
+                        <CountUp end={81000} duration={3.5} separator="," />+
                       </Title>
                     </motion.div>
                     <motion.div variants={statsItemVariants}>
