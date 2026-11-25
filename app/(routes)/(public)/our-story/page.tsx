@@ -500,7 +500,7 @@ const OurStoryPage = () => {
                 >
                   <Image
                     src="/images/naza/image_naza_1.jpg"
-                    alt="Miss Prayer Nwagboso with students during a Naza Agape Foundation community outreach"
+                    alt="Ms. Prayer Nwagboso with students during a Naza Agape Foundation community outreach"
                     radius="lg"
                     style={{
                       border: '1px solid rgba(255, 0, 127, 0.12)',
@@ -525,7 +525,7 @@ const OurStoryPage = () => {
                     ADVOCACY & COMMUNITY
                   </Badge>
                   <Title order={2} style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', letterSpacing: '-0.8px', color: '#0C090B' }}>
-                    Mrs Prayer Nwagboso — Empowering Girls on the Ground
+                    Ms. Prayer Nwagboso — Empowering Girls on the Ground
                   </Title>
                   <Text size="md" style={{ lineHeight: 1.65, color: 'rgba(12, 9, 11, 0.72)' }}>
                     As Founder & CEO of Naza Agape Foundation, Mrs Prayer (Chinaza) Nwagboso channels over eight years of
