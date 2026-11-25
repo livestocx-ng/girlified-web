@@ -500,7 +500,7 @@ const OurStoryPage = () => {
                 >
                   <Image
                     src="/images/naza/image_naza_1.jpg"
-                    alt="Mrs Prayer Nwagboso with students during a Naza Agape Foundation community outreach"
+                    alt="Miss Prayer Nwagboso with students during a Naza Agape Foundation community outreach"
                     radius="lg"
                     style={{
                       border: '1px solid rgba(255, 0, 127, 0.12)',
